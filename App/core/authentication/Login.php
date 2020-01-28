@@ -43,16 +43,16 @@ class Login extends QueryBuilder
 
                             $name = $row["name"];
                             $email = $row["email"];
-                            
+
                             $hashed_password = $row["password"];
 
                             if (password_verify($password, $hashed_password)) {
-                                if(session_status()== PHP_SESSION_NONE)
-                                session_start();
+                                if (session_status() == PHP_SESSION_NONE)
+                                    session_start();
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["name"] = $name;
                                 $_SESSION["email"] = $email;
-                                
+
                                 header("location:/dashboard");
                             } else {
                                 echo "The password you entered was not valid.";
@@ -65,6 +65,49 @@ class Login extends QueryBuilder
                     echo "Oops! Something went wrong. Please try again later";
                 }
             }
+        }
+    }
+
+    public function GLogin($name,$email)
+    {
+        $sel_column = array('email');
+        
+        $sel_values = array('email');
+        
+        $stmt = parent::select($this->table, $sel_column, $sel_values, $email);
+        if($stmt->execute())
+        {
+            if($stmt->rowcount() == 1)
+            {
+                echo "the email is already taken";
+            }
+            else
+            {   
+                $column = array('name','email','provider'); 
+                $email = "'".$email."'";
+                $name = "'".$name."'";
+                $values = array($name,$email,$email);
+                $stmt = parent::insert($this->table, $column, $values);
+                return $stmt->execute();
+            }
+        }
+    }
+
+
+
+    public function GAuth()
+    {
+        require_once "gmailconfig.php";
+
+        if (isset($_GET['code'])) {
+            $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
+
+
+            $oAuth = new Google_Service_Oauth2($gClient); //profile informatiom
+            $userData = $oAuth->userinfo_v2_me->get();   // full info of user available in gmail account.
+            return $userData;
+        } else {
+            return $client->createAuthUrl();
         }
     }
 }

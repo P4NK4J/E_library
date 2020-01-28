@@ -9,7 +9,7 @@ $router->define([
 
     'verify' => 'controller/authentication/VerifyRegistrationController.php',
 
-    'GmailLogin.php' => 'core/authentication/GmailLogin.php',
+    'GmailLogin.php' => 'controller/authentication/GmailLoginController.php',
 
     'books' => 'controller/books/BookController.php',
 
