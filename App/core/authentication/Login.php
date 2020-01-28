@@ -68,25 +68,32 @@ class Login extends QueryBuilder
         }
     }
 
-    public function GLogin($name,$email)
+    public function GLogin($name, $email)
     {
-        $sel_column = array('email');
-        
+        $sel_column = array('email','user_type');
+
         $sel_values = array('email');
-        
+
         $stmt = parent::select($this->table, $sel_column, $sel_values, $email);
-        if($stmt->execute())
-        {
-            if($stmt->rowcount() == 1)
-            {
-                echo "the email is already taken";
-            }
-            else
-            {   
-                $column = array('name','email','provider'); 
-                $email = "'".$email."'";
-                $name = "'".$name."'";
-                $values = array($name,$email,$email);
+        if ($stmt->execute()) {
+
+            $count = $stmt->rowcount();
+            if ($count == 1) {
+
+                $row = $stmt->fetch();  //row corresponding to the user in database
+                                                         
+                if ($row['user_type'] == 'admin') {      // user_type column in database
+                    header('location:/admin');
+                }
+
+                else {
+                    header('location:/reader');
+                }
+            } else {
+                $column = array('name', 'email', 'provider', 'activated');
+                $email = "'" . $email . "'";
+                $name = "'" . $name . "'";
+                $values = array($name, $email, $email, '1');
                 $stmt = parent::insert($this->table, $column, $values);
                 return $stmt->execute();
             }

@@ -6,14 +6,23 @@ class User extends Login
   {
     parent::__construct($pdo);
     $this->table = 'users';
-    $this->column = array('id','provider','provider_id','name', 'email', 'password','user_type','hash' );
+    $this->column = array('id','provider','provider_id','name', 'email', 'password','user_type','hash');
     $this->values = array('name', 'email', 'password');
   }
 
-  public function selectUsers()
+
+
+  //function to select the list of all items in a table.
+
+  public function selectAll()
   {
-    return parent::record($this->table, $this->column);
+    return  parent::record($this->table, $this->column);
+    
   }
+
+
+
+  //function to add a user to the database.
 
   public function addUser($name,$email,$password)
   {

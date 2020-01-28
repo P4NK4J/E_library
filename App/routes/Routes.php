@@ -13,7 +13,9 @@ $router->define([
 
     'books' => 'controller/books/BookController.php',
 
-    'dashboard' => 'views/dashboard.view.php'
+    'admin' => 'views/users/admin.view.php',
+
+    'reader' => 'views/users/reader.view.php',
 
 
 ]);

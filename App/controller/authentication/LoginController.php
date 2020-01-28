@@ -6,13 +6,9 @@ require 'views/authentication/login.view.php';
 
 
 
-if(isset($_POST['login']))
-{
-    
-    $app['database']->userLogin($_POST['email'],$_POST['password']);
+if (isset($_POST['login'])) {
 
-}
-else
-{
-   return "please try again later";
+    $app['database']->userLogin($_POST['email'], $_POST['password']);
+} else {
+    return "please try again later";
 }
