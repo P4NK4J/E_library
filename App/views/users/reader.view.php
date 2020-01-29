@@ -1,3 +1,3 @@
 <?php
 
-require "views/users/navbar.admin.view.php";
+require "views/users/navbar.reader.view.php";

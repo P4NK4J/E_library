@@ -1,3 +1,5 @@
+<?php require "views/users/navbar.admin.view.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +16,16 @@
 
 </head>
 <body>
-<div style="padding-top: 20px ; padding-left: 200px ; padding-right: 200px">
+<div style="padding-top: 100px ; padding-left: 200px ; padding-right: 200px">
 <ul class="list-group">
 
 <!--implement php logic for dynamic iteration of list according to database-->
-  <li class="list-group-item">reader 1</li>
-  <li class="list-group-item">reader 2</li>
-  <li class="list-group-item">reader 3</li>
-  <li class="list-group-item">reader 4</li>
-  <li class="list-group-item">reader 5 </li>
+  <?php
+  foreach($list as $key=>$value):?>
+  <li class="list-group-item"><?php print_r($value['name']) ?></li>
+
+  <?php endforeach;?>
+  
 </ul>
 </div>
     

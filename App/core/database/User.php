@@ -41,7 +41,7 @@ class User extends Login
       } else {
         $hash = md5(rand(0, 1000));
         $cred[4] = "'" . $hash . "'";
-        $column = array('name','email','password','user_type','hash');
+        $column = array('name', 'email', 'password', 'user_type', 'hash');
         $insert = parent::insert($this->table, $column, $cred);
         $insert->execute();
         $lastID = $this->pdo->lastinsertID();
@@ -62,14 +62,25 @@ class User extends Login
 
     $values = array('hash');
     $stmt = parent::select($this->table, $this->column, $values, $hash);
-    var_dump($stmt);
+    
     if ($stmt->execute()) {
       $count = $stmt->rowcount();
       if ($count == 1) {
         $stmt = parent::update($this->table, ['activated' => '1'], 'hash', $hash);
         return $stmt->execute();
-      
       }
     }
+  }
+
+  public function userList($type)
+  {
+
+    $table = 'users';
+    $column = array('name');
+    $values = array('user_type');
+    $stmt = parent::select($table, $column, $values, $type);
+    $stmt->execute();
+    $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $row;
   }
 }

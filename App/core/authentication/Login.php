@@ -52,22 +52,26 @@ class Login extends QueryBuilder
                                 $_SESSION["name"] = $name;
                                 $_SESSION["email"] = $email;
 
-                                if ($row['activated'] == 1) {
+                                if ($row['activated']) {
                                     $str = $row['user_type'];
                                     header("location:/$str");
                                 }
                                 else{
+                                    
                                     echo "First verify your email via link";
                                 }
                             } else {
-                                echo "The password you entered was not valid.";
+
+                                echo "Invalid Password.";
                             }
                         }
                     } else {
-                        echo  "No account found with that email";
+                        
+                        echo  "Email not Found";
                     }
                 } else {
-                    echo "Oops! Something went wrong. Please try again later";
+                    
+                    echo "Sorry for the inconvenience.... Please try again later";
                 }
             }
         }

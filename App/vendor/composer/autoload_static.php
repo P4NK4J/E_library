@@ -21,6 +21,7 @@ class ComposerStaticInitdf113608740803590308302ff1b674b6
     );
 
     public static $classMap = array (
+        'Book' => __DIR__ . '/../..' . '/core/database/Book.php',
         'ComposerAutoloaderInit0497330eebc0ab2a0da76ff81ed37417' => __DIR__ . '/../..' . '/Resources/GoogleAPI/vendor/composer/autoload_real.php',
         'ComposerAutoloaderInitdf113608740803590308302ff1b674b6' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
@@ -9997,7 +9998,7 @@ class ComposerStaticInitdf113608740803590308302ff1b674b6
         'Monolog\\Utils' => __DIR__ . '/../..' . '/Resources/GoogleAPI/vendor/monolog/monolog/src/Monolog/Utils.php',
         'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
         'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
-        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/PHPMailer.php',
         'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
         'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'Psr\\Cache\\CacheException' => __DIR__ . '/../..' . '/Resources/GoogleAPI/vendor/psr/cache/src/CacheException.php',

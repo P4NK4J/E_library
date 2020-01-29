@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Book' => $baseDir . '/core/database/Book.php',
     'ComposerAutoloaderInit0497330eebc0ab2a0da76ff81ed37417' => $baseDir . '/Resources/GoogleAPI/vendor/composer/autoload_real.php',
     'ComposerAutoloaderInitdf113608740803590308302ff1b674b6' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
@@ -9982,7 +9983,7 @@ return array(
     'Monolog\\Utils' => $baseDir . '/Resources/GoogleAPI/vendor/monolog/monolog/src/Monolog/Utils.php',
     'PHPMailer\\PHPMailer\\Exception' => $vendorDir . '/phpmailer/phpmailer/src/Exception.php',
     'PHPMailer\\PHPMailer\\OAuth' => $vendorDir . '/phpmailer/phpmailer/src/OAuth.php',
-    'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/src/PHPMailer.php',
+    'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/PHPMailer.php',
     'PHPMailer\\PHPMailer\\POP3' => $vendorDir . '/phpmailer/phpmailer/src/POP3.php',
     'PHPMailer\\PHPMailer\\SMTP' => $vendorDir . '/phpmailer/phpmailer/src/SMTP.php',
     'Psr\\Cache\\CacheException' => $baseDir . '/Resources/GoogleAPI/vendor/psr/cache/src/CacheException.php',

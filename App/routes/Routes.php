@@ -16,8 +16,13 @@ $router->define([
     'admin' => 'views/users/admin.view.php',
 
     'reader' => 'views/users/reader.view.php',
+    
+    'userlist' => 'controller/UserListController.php',
 
     'login' => 'views/authentication/login.view.php',
+
+    'read' => 'views/books/already.read.view.php',
+     
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',
 
