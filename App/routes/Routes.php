@@ -11,7 +11,9 @@ $router->define([
 
     'GmailLogin.php' => 'controller/authentication/GmailLoginController.php',
 
-    'books' => 'controller/books/BookController.php',
+    'add' => 'views/books/add.view.php',
+
+    'edit' => 'views/books/edit.view.php',
 
     'admin' => 'views/users/admin.view.php',
 
@@ -22,6 +24,8 @@ $router->define([
     'login' => 'views/authentication/login.view.php',
 
     'read' => 'views/books/already.read.view.php',
+
+    
      
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',

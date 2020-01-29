@@ -22,10 +22,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="books">Add Book </a>
+        <a class="nav-link" href="add">Add Book </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="books">Edit Book </a>
+        <a class="nav-link" href="edit">Edit Book </a>
       </li>
       
       <li class="nav-item">
