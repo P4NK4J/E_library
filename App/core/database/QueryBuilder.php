@@ -40,4 +40,14 @@ class QueryBuilder
 
         return $stmt;
     }
+
+    public function update($table,$update,$check,$hash) {
+        $str=',';
+        foreach ($update as $key => $value){
+            $str=$str.$key."='${value}',";
+        }
+        $str=trim($str,',');
+    $stmt = $this->pdo->prepare("UPDATE ${table} SET ${str} WHERE ${check} ='{$hash}'");
+    return $stmt;
+    }
 }

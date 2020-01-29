@@ -8,7 +8,7 @@ class Login extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'users';
-        $this->column = array('name', 'email', 'password');
+        $this->column = array('name', 'email', 'password','user_type','activated');
         $this->values = array('name', 'email', 'password');
     }
 
@@ -33,8 +33,7 @@ class Login extends QueryBuilder
             if (empty($email_err) && empty($password_err)) {
                 $this->values = array('email');
                 $stmt = parent::select($this->table, $this->column, $this->values, $email);
-
-
+                
 
                 if ($stmt->execute()) {
                     if ($stmt->rowcount() == 1) {
@@ -53,7 +52,13 @@ class Login extends QueryBuilder
                                 $_SESSION["name"] = $name;
                                 $_SESSION["email"] = $email;
 
-                                header("location:/dashboard");
+                                if ($row['activated'] == 1) {
+                                    $str = $row['user_type'];
+                                    header("location:/$str");
+                                }
+                                else{
+                                    echo "First verify your email via link";
+                                }
                             } else {
                                 echo "The password you entered was not valid.";
                             }
@@ -70,7 +75,7 @@ class Login extends QueryBuilder
 
     public function GLogin($name, $email)
     {
-        $sel_column = array('email','user_type');
+        $sel_column = array('email', 'user_type');
 
         $sel_values = array('email');
 
@@ -81,12 +86,10 @@ class Login extends QueryBuilder
             if ($count == 1) {
 
                 $row = $stmt->fetch();  //row corresponding to the user in database
-                                                         
+
                 if ($row['user_type'] == 'admin') {      // user_type column in database
                     header('location:/admin');
-                }
-
-                else {
+                } else {
                     header('location:/reader');
                 }
             } else {
@@ -95,6 +98,7 @@ class Login extends QueryBuilder
                 $name = "'" . $name . "'";
                 $values = array($name, $email, $email, '1');
                 $stmt = parent::insert($this->table, $column, $values);
+                header("location:/reader");
                 return $stmt->execute();
             }
         }

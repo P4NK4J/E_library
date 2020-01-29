@@ -17,5 +17,9 @@ $router->define([
 
     'reader' => 'views/users/reader.view.php',
 
+    'login' => 'views/authentication/login.view.php',
+
+    'activation' => 'controller/authentication/VerifyRegistrationController.php',
+
 
 ]);
