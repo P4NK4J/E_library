@@ -1,6 +1,7 @@
 <?php
 
 
+
 class Login extends QueryBuilder
 
 {
@@ -8,7 +9,7 @@ class Login extends QueryBuilder
     {
         parent::__construct($pdo);
         $this->table = 'users';
-        $this->column = array('name', 'email', 'password','user_type','activated');
+        $this->column = array('name', 'email', 'password', 'user_type', 'activated');
         $this->values = array('name', 'email', 'password');
     }
 
@@ -33,31 +34,32 @@ class Login extends QueryBuilder
             if (empty($email_err) && empty($password_err)) {
                 $this->values = array('email');
                 $stmt = parent::select($this->table, $this->column, $this->values, $email);
-                
+
 
                 if ($stmt->execute()) {
                     if ($stmt->rowcount() == 1) {
 
                         if ($row = $stmt->fetch()) {
 
-                            $name = $row["name"];
-                            $email = $row["email"];
+
 
                             $hashed_password = $row["password"];
 
                             if (password_verify($password, $hashed_password)) {
-                                if (session_status() == PHP_SESSION_NONE)
-                                    session_start();
-                                $_SESSION["loggedin"] = true;
-                                $_SESSION["name"] = $name;
-                                $_SESSION["email"] = $email;
-
+                               
                                 if ($row['activated']) {
+
+                                    session_start();
+                                    $_SESSION["loggedin"] = true;
+                                    $_SESSION["name"] = $row['name'];
+                                    $_SESSION["email"] = $row['email'];
+                                    $_SESSION['id'] = $row['id'];
+                                    $_SESSION['user_type'] = $row['user_type'];
+
                                     $str = $row['user_type'];
                                     header("location:/$str");
-                                }
-                                else{
-                                    
+                                } else {
+
                                     echo "First verify your email via link";
                                 }
                             } else {
@@ -66,11 +68,11 @@ class Login extends QueryBuilder
                             }
                         }
                     } else {
-                        
+
                         echo  "Email not Found";
                     }
                 } else {
-                    
+
                     echo "Sorry for the inconvenience.... Please try again later";
                 }
             }
@@ -90,6 +92,12 @@ class Login extends QueryBuilder
             if ($count == 1) {
 
                 $row = $stmt->fetch();  //row corresponding to the user in database
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["name"] = $row['name'];
+                $_SESSION["email"] = $row['email'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['user_type'] = $row['user_type'];
 
                 if ($row['user_type'] == 'admin') {      // user_type column in database
                     header('location:/admin');
@@ -101,9 +109,18 @@ class Login extends QueryBuilder
                 $email = "'" . $email . "'";
                 $name = "'" . $name . "'";
                 $values = array($name, $email, $email, '1');
-                $stmt = parent::insert($this->table, $column, $values);
-                header("location:/reader");
-                return $stmt->execute();
+                $result = parent::insert($this->table, $column, $values);
+                $entry = $result->execute();
+                $stmt->execute();
+                $row = $stmt->fetch();
+                session_start();
+                $_SESSION["loggedin"] = true;
+                $_SESSION["name"] = $row['name'];
+                $_SESSION["email"] = $row['email'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['user_type'] = $row['user_type'];
+                //header("location:/reader");
+                return $entry;
             }
         }
     }
@@ -112,17 +129,17 @@ class Login extends QueryBuilder
 
     public function GAuth()
     {
-        require_once "gmailconfig.php";
+       require "gmailconfig.php";
 
         if (isset($_GET['code'])) {
             $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
-
+            $gClient->setAccessToken($token['access_token']);
 
             $oAuth = new Google_Service_Oauth2($gClient); //profile informatiom
             $userData = $oAuth->userinfo_v2_me->get();   // full info of user available in gmail account.
             return $userData;
         } else {
-            return $client->createAuthUrl();
+            return  $gClient->createAuthUrl();
         }
     }
 }

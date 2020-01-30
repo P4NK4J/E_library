@@ -1,9 +1,24 @@
 <?php
-require "gmailconfig.php";
 
-$loginUrl = $gClient->createAuthUrl();
+
+
+session_start();
+if (isset($_SESSION['loggedin']) == true) {
+    if ($_SESSION['user_type'] == 'reader') {
+        header("location:/reader");
+    } else if ($_SESSION['user_type'] == 'admin') {
+        header("location:/admin");
+    } 
+}
+
+else {
+    require "gmailconfig.php";
+    $loginUrl = $gClient->createAuthUrl();
+}
+
+
+
 require 'views/authentication/login.view.php';
-
 
 
 if (isset($_POST['login'])) {
