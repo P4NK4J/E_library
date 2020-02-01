@@ -21,21 +21,23 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item mx-3">
         <a class="nav-link" href="add">Add Book </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="edit">Edit Book </a>
+      
+      <li class="nav-item mx-3">
+        <a class="nav-link" href="booklist">List Of Books </a>
       </li>
       
-      <li class="nav-item">
+      <li class="nav-item mx-3">
         <a class="nav-link" href="userlist">List Of Readers</a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="logout">Logout</a>
-      </li>
     </ul>
+    <span 
+     class="nav-item mx-5">
+        <a class="btn btn-outline-dark"  href="logout">Logout</a>
+  </span> 
   </div>
 </nav>
     

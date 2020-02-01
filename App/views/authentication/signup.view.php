@@ -29,19 +29,19 @@
                         <form action="" name="registration" method="post">
                            <div class="form-group">
                               <label for="exampleInputEmail1">Name</label>
-                              <input type="text" required  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter your name">
+                              <input type="text" required  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" required name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                              <input type="email" required name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password</label>
-                              <input type="password" required name="password"  class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter Password">
+                              <input type="password" required name="password"  class="form-control" id="password" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Re-enter Password</label>
-                              <input type="password" required name="re_password"  class="form-control" id="re_password" aria-describedby="emailHelp" placeholder="Enter Password">
+                              <input type="password" required name="re_password"  class="form-control" id="re_password" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="col-md-12 text-center mb-3">
                               <button type="submit"  required name="signup" class=" btn btn-block mybtn btn-primary tx-tfm">Get started</button>

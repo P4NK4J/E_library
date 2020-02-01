@@ -22,15 +22,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       
-      <li class="nav-item">
+    <li class="nav-item mx-5 ">
+        <a class="nav-link" href="booklist">Available books</a>
+      </li>
+      <li class="nav-item mx-5">
         <a class="nav-link" href="read">Read by me</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout">Logout</a>
-      </li>
-
-      
+     
     </ul>
+    <span 
+     class="nav-item mx-5">
+        <a class="btn btn-outline-dark"  href="logout">Logout</a>
+  </span> 
   </div>
 </nav>
     

@@ -30,14 +30,14 @@
                   <form action="" method="post" name="login">
                      <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
                      </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                        <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="">
                      </div>
                      <div class="col-md-12 text-center ">
-                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" name="login">Login</button>
+                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" name="login">Explore..!!</button>
                      </div>
                      <div class="col-md-12 ">
                         <div class="login-or">
@@ -49,7 +49,7 @@
                         <p class="text-center">
                            <a href="<?= $loginUrl ?>" class="google btn mybtn">
                               <i class="fa fa-google-plus">
-                              </i>Login using Google
+                              </i>       Login using Google
                            </a>
                         </p>
                      </div>

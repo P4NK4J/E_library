@@ -51,7 +51,7 @@ header("location:/");
                                 <input type="text" name="edition" id="edition" class="form-control" placeholder="Please Enter Edition">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Upload Book Image</label>
+                                <label for="exampleInputEmail1">Upload Book Image (size should be less than 5 mb)</label>
                                 <input type="file" required="" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
                             </div>
 

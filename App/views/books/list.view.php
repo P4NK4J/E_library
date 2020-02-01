@@ -1,3 +1,5 @@
+<?php require "views/users/navbar.admin.view.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

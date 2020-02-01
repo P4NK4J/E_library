@@ -25,8 +25,7 @@ $router->define([
 
     'read' => 'views/books/already.read.view.php',
 
-    
-     
+    'booklist' => 'views/books/list.view.php',
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',
 
