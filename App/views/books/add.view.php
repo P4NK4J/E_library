@@ -1,15 +1,16 @@
-<?php 
-
+<?php
 session_start();
 
-if($_SESSION['user_type'] != 'admin')
-{
-header("location:/");
+if ($_SESSION['user_type'] != 'admin') {
+    header("location:/");
 }
 
+$column = array('name');
+$categories = $app['categories']->cat_names('categories', $column);
 
 ?>
-<!DOCTYPE html <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -21,42 +22,55 @@ header("location:/");
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-<body>
-    <div class="container">
+</head>
+
+<body style='padding-top: 0px; padding-bottom: 100px'>
+
+    <?php require "views/users/navbar.admin.view.php"; ?>
+    <div class="container" style="padding-top: 20px;">
         <div class="row">
             <div class="col-md-5 mx-auto">
                 <div id="first">
                     <div class="myform form ">
                         <div class="logo mb-3">
                             <div class="col-md-12 text-center">
-                                <h1>Enter Details</h1>
+                                <h2>Enter Details</h2>
                             </div>
                         </div>
-                        <form action="" method="post" name="login">
+                        <form action="books" method="post" name="addbook" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Name</label>
-                                <input type="text" required name="bookname" class="form-control" id="bookname" placeholder="Please Enter Name">
+                                <label>Name</label>
+                                <input type="text" required name="bookname" class="form-control" id="bookname" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Author</label>
-                                <input type="text" required name="author" id="author" class="form-control" placeholder="Please Enter Author">
+                                <label>Author</label>
+                                <input type="text" required name="author" id="author" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Edition</label>
-                                <input type="text" name="edition" id="edition" class="form-control" placeholder="Please Enter Edition">
+                                <label>Edition</label>
+                                <input type="text" required name="edition" id="edition" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">Book Categories:
+                                <div class="input-group">
+                                    <?php foreach ($categories as $key) : ?>
+                                        <label for="<?php $key['id'] ?>" class="mr-3">
+                                            <input type="checkbox" class="mr-1" name="name">
+                                            <?php echo ($key['name']); ?>
+                                        </label>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Upload Book Image (size should be less than 5 mb)</label>
-                                <input type="file" required="" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
+                                <label>Book Cover Image </label>
+                                <input type="file" required value="Upload Image" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
                             </div>
 
                             <div class="col-md-12 text-center ">
-                                <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" name="add">Done</button>
+                                <button type="submit" name="add" class=" btn btn-block mybtn btn-primary tx-tfm">Done</button>
                             </div>
                         </form>
                     </div>

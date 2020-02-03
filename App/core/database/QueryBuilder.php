@@ -20,7 +20,7 @@ class QueryBuilder
         $statement = $this->pdo->prepare("select {$column} from {$table}");
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function select($table, $column, $values, $conditional)

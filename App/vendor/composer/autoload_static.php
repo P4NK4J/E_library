@@ -22,6 +22,7 @@ class ComposerStaticInitdf113608740803590308302ff1b674b6
 
     public static $classMap = array (
         'Book' => __DIR__ . '/../..' . '/core/database/Book.php',
+        'Categories' => __DIR__ . '/../..' . '/core/database/Categories.php',
         'ComposerAutoloaderInit0497330eebc0ab2a0da76ff81ed37417' => __DIR__ . '/../..' . '/Resources/GoogleAPI/vendor/composer/autoload_real.php',
         'ComposerAutoloaderInitdf113608740803590308302ff1b674b6' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',

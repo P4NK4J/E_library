@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Book' => $baseDir . '/core/database/Book.php',
+    'Categories' => $baseDir . '/core/database/Categories.php',
     'ComposerAutoloaderInit0497330eebc0ab2a0da76ff81ed37417' => $baseDir . '/Resources/GoogleAPI/vendor/composer/autoload_real.php',
     'ComposerAutoloaderInitdf113608740803590308302ff1b674b6' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',

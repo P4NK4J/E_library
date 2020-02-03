@@ -44,7 +44,7 @@
                               <input type="password" required name="re_password"  class="form-control" id="re_password" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="col-md-12 text-center mb-3">
-                              <button type="submit"  required name="signup" class=" btn btn-block mybtn btn-primary tx-tfm">Get started</button>
+                              <button type="submit"  name="signup" class=" btn btn-block mybtn btn-primary tx-tfm">Get started</button>
                            </div>
         
                             </div>

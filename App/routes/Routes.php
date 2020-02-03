@@ -11,6 +11,8 @@ $router->define([
 
     'GmailLogin.php' => 'controller/authentication/GmailLoginController.php',
 
+    'books' => 'controller/books/BookController.php',
+
     'add' => 'views/books/add.view.php',
 
     'edit' => 'views/books/edit.view.php',

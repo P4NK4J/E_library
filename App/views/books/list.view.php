@@ -1,4 +1,15 @@
-<?php require "views/users/navbar.admin.view.php" ?>
+<?php
+if(session_status() == PHP_SESSION_NONE)
+session_start();
+
+if($_SESSION['user_type'] == 'admin')
+require "views/users/navbar.admin.view.php";
+
+elseif ($_SESSION['user_type'] == 'reader')
+require "views/users/navbar.reader.view.php";
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,21 +33,15 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card" style='margin-top: 30px; margin-left: 100px;'>
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
+  
+    
 </div>
     
 </body>
