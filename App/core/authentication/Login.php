@@ -79,7 +79,7 @@ class Login extends QueryBuilder
         }
     }
 
-    public function GLogin($name, $email)
+    public function gLogin($name, $email)
     {
         $sel_column = array('email', 'user_type');
 
@@ -127,7 +127,7 @@ class Login extends QueryBuilder
 
 
 
-    public function GAuth()
+    public function gAuth()
     {
        require "gmailconfig.php";
 

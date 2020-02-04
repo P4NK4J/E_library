@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['add']))
+if (isset($_POST['addbook']))
 {
     
-    $app['database_book']->addBook($_POST);
-    header("location:/");
+    header("location:/addbook");
 }
+require "views/books/list.view.php";

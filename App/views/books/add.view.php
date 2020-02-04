@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-if ($_SESSION['user_type'] != 'admin') {
-    header("location:/");
-}
 
 $column = array('name');
-$categories = $app['categories']->cat_names('categories', $column);
+$categories = $app['categories']->categoryList('categories', $column);
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +36,7 @@ $categories = $app['categories']->cat_names('categories', $column);
                                 <h2>Enter Details</h2>
                             </div>
                         </div>
-                        <form action="books" method="post" name="addbook" enctype="multipart/form-data">
+                        <form action="" method="post" name="add" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" required name="bookname" class="form-control" id="bookname" placeholder="">
@@ -56,10 +51,12 @@ $categories = $app['categories']->cat_names('categories', $column);
                             </div>
                             <div class="form-group">Book Categories:
                                 <div class="input-group">
-                                    <?php foreach ($categories as $key) : ?>
+                                <?php $i = 1;
+                                     foreach ($categories as $key) : ?>
                                         <label for="<?php $key['id'] ?>" class="mr-3">
                                             <input type="checkbox" class="mr-1" name="name">
-                                            <?php echo ($key['name']); ?>
+                                            <?php echo ($key['name']); 
+                                             $i++; ?>
                                         </label>
                                     <?php endforeach; ?>
                                 </div>

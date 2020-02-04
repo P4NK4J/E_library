@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item mx-3">
-        <a class="nav-link" href="add">Add Book </a>
+        <a class="nav-link" href="addbook">Add Book </a>
       </li>
 
       

@@ -5,7 +5,7 @@ session_start();
 if($_SESSION['user_type'] == 'admin')
 require "views/users/navbar.admin.view.php";
 
-elseif ($_SESSION['user_type'] == 'reader')
+else if ($_SESSION['user_type'] == 'reader')
 require "views/users/navbar.reader.view.php";
 
 
@@ -29,7 +29,6 @@ require "views/users/navbar.reader.view.php";
 </head>
 <body>
 
-<!-- use further modifications when you are connected with the database for iteration of cards--> 
 
 <div class="row">
   <div class="col-sm-4">

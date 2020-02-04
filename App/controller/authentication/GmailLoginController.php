@@ -1,8 +1,8 @@
 <?php
 
 
-$data = Login::GAuth();
+$data = Login::gAuth();
 
-$entry = $app['database']->GLogin($data->name, $data->email);
+$entry = $app['database']->gLogin($data->name, $data->email);
 
 require "views/authentication/login.view.php";
