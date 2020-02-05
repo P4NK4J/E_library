@@ -1,6 +1,6 @@
 <?php
 
-$column = array('name');
+$column = array('id','name');
 $categories = $app['categories']->categoryList('categories', $column);
 
 ?>
@@ -23,7 +23,7 @@ $categories = $app['categories']->categoryList('categories', $column);
 
 </head>
 
-<body style='padding-top: 0px; padding-bottom: 100px'>
+<body style='padding-top: 0px; padding-bottom: 200px'>
 
     <?php require "views/users/navbar.admin.view.php"; ?>
     <div class="container" style="padding-top: 20px;">
@@ -36,7 +36,7 @@ $categories = $app['categories']->categoryList('categories', $column);
                                 <h2>Enter Details</h2>
                             </div>
                         </div>
-                        <form action="" method="post" name="add" enctype="multipart/form-data">
+                        <form action="" method="post"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" required name="bookname" class="form-control" id="bookname" placeholder="">
@@ -49,16 +49,18 @@ $categories = $app['categories']->categoryList('categories', $column);
                                 <label>Edition</label>
                                 <input type="text" required name="edition" id="edition" class="form-control" placeholder="">
                             </div>
-                            <div class="form-group">Book Categories:
-                                <div class="input-group">
-                                <?php $i = 1;
-                                     foreach ($categories as $key) : ?>
+                            <div class="form-group" >Book Categories:
+                                <div class="input-group" style="margin-top: 15px;">
+                                <?php $i = 1;?>
+                                     <?php foreach ($categories as $key) :
+                                
+                                      ?>
                                         <label for="<?php $key['id'] ?>" class="mr-3">
-                                            <input type="checkbox" class="mr-1" name="name">
-                                            <?php echo ($key['name']); 
+                                            <input type="checkbox" class="mr-1" value=<?php echo $key['id']?> name=<?php echo $i?>>
+                                             <?php echo ($key['name']); 
                                              $i++; ?>
                                         </label>
-                                    <?php endforeach; ?>
+                                    <?php endforeach;?>
                                 </div>
                             </div>
                             <div class="form-group">

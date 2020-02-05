@@ -9,6 +9,8 @@ else if ($_SESSION['user_type'] == 'reader')
 require "views/users/navbar.reader.view.php";
 
 
+
+
 ?>
 
 <!DOCTYPE html>

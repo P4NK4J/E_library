@@ -49,7 +49,7 @@ class Login extends QueryBuilder
                                
                                 if ($row['activated']) {
 
-                                    session_start();
+                                    //session_start();
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION["name"] = $row['name'];
                                     $_SESSION["email"] = $row['email'];
@@ -115,9 +115,9 @@ class Login extends QueryBuilder
                 $row = $stmt->fetch();
                 session_start();
                 $_SESSION["loggedin"] = true;
-                $_SESSION["name"] = $row['name'];
+                $_SESSION['name'] = $row['name'];
                 $_SESSION["email"] = $row['email'];
-                $_SESSION['id'] = $row['id'];
+                //$_SESSION['id'] = $row['id'];
                 $_SESSION['user_type'] = $row['user_type'];
                 //header("location:/reader");
                 return $entry;

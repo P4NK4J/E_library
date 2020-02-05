@@ -10,18 +10,19 @@ class Categories extends QueryBuilder
 
     public function categoryList()
     {
+        $this->column = array('id','name');
         return parent::record($this->table, $this->column);
     }
 
     public function addCategories($book_id, $categories)
     {
-        $this->col_name = array('book_id', 'category_id');
+        $this->column = array('book_id', 'category_id');
 
-        foreach ($categories as $category) {
-            $this->values = ["'${book_id}'", "'${category}'"];
-            $result = parent::insert('bridge', $this->col_name, $this->values);
-            var_dump($result);
-            $result->execute();
-        }
+        foreach ($categories as $category) : 
+                $this->values = ["'${book_id}'", "'${category}'"];
+                $result = parent::insert('bridge', $this->column, $this->values);
+
+                $result->execute();      
+        endforeach;
     }
 }

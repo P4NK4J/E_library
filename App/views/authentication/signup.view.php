@@ -29,18 +29,22 @@
                         <form action="" name="registration" method="post">
                            <div class="form-group">
                               <label for="exampleInputEmail1">Name</label>
+                              <span style="color:red">*</span></label>
                               <input type="text" required  name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Email address</label>
+                              <span style="color:red">*</span></label>
                               <input type="email" required name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password</label>
+                              <span style="color:red">*</span></label>
                               <input type="password" required name="password"  class="form-control" id="password" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Re-enter Password</label>
+                              <span style="color:red">*</span></label>
                               <input type="password" required name="re_password"  class="form-control" id="re_password" aria-describedby="emailHelp" placeholder="">
                            </div>
                            <div class="col-md-12 text-center mb-3">

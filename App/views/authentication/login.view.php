@@ -28,12 +28,17 @@
                      </div>
                   </div>
                   <form action="" method="post" name="login">
-                     <div class="form-group">
+                     <div class="form-group"> 
+                     
                         <label for="exampleInputEmail1">Email address</label>
+                        <span style="color:red">*</span></label>
+                        
                         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
+                        
                      </div>
                      <div class="form-group">
-                        <label for="exampleInputEmail1">Password</label>
+                        <label for="passord">Password</label>
+                        <span style="color:red">*</span></label>
                         <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="">
                      </div>
                      <div class="col-md-12 text-center ">
@@ -49,7 +54,7 @@
                         <p class="text-center">
                            <a href="<?= $loginUrl ?>" class="google btn mybtn">
                               <i class="fa fa-google-plus">
-                              </i>       Login using Google
+                              </i> Login using Google
                            </a>
                         </p>
                      </div>
