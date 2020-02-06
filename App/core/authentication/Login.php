@@ -115,11 +115,12 @@ class Login extends QueryBuilder
                 $row = $stmt->fetch();
                 session_start();
                 $_SESSION["loggedin"] = true;
+                
                 $_SESSION['name'] = $row['name'];
                 $_SESSION["email"] = $row['email'];
-                //$_SESSION['id'] = $row['id'];
+                
                 $_SESSION['user_type'] = $row['user_type'];
-                //header("location:/reader");
+                
                 return $entry;
             }
         }
@@ -130,10 +131,15 @@ class Login extends QueryBuilder
     public function gAuth()
     {
        require "gmailconfig.php";
+       
 
         if (isset($_GET['code'])) {
             $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
+            
+            
             $gClient->setAccessToken($token['access_token']);
+            
+            
 
             $oAuth = new Google_Service_Oauth2($gClient); //profile informatiom
             $userData = $oAuth->userinfo_v2_me->get();   // full info of user available in gmail account.

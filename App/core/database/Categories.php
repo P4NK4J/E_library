@@ -10,7 +10,7 @@ class Categories extends QueryBuilder
 
     public function categoryList()
     {
-        $this->column = array('id','name');
+        $this->column = array('id','name','date_added');
         return parent::record($this->table, $this->column);
     }
 
@@ -25,4 +25,20 @@ class Categories extends QueryBuilder
                 $result->execute();      
         endforeach;
     }
+    public function deleteCat($id)
+    {
+        return parent::deleteAll($this->table, 'id', $id);
+    }
+
+    public function addCat($name)
+    {
+        return parent::insert($this->table,'name',$name);
+    }
+
+    public function selectCat($id)
+    {
+        $this->values = array('id');
+        return parent::select($this->table, $this->column, $this->values, $id);
+    }
 }
+

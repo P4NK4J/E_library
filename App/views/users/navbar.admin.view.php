@@ -17,6 +17,10 @@
       </li>
       
       <li class="nav-item mx-3">
+        <a class="nav-link" href="category_list">Categories</a>
+      </li>
+
+      <li class="nav-item mx-3">
         <a class="nav-link" href="userlist">Readers</a>
       </li>
 

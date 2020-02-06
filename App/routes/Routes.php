@@ -30,6 +30,11 @@ $router->define([
     'booklist' => 'views/books/list.view.php',
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',
+    
+    'category_list' => 'views/books/category.list.view.php',
+    
+    'deleteuser' => 'controller/DeleteUserController.php',
 
+    'deletecategory' => 'controller/DeleteCategoryController.php',
 
 ]);

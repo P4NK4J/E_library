@@ -76,11 +76,22 @@ class User extends Login
   {
 
     $table = 'users';
-    $column = array('name','email','registration_date');
+    $column = array('id','name','email','registration_date',);
     $values = array('user_type');
     $stmt = parent::select($table, $column, $values, $type);
     $stmt->execute();
     $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     return $row;
   }
+
+  public function deleteUser($id)
+    {
+        return parent::deleteAll($this->table, 'id', $id);
+    }
+    public function selectUser($id)
+    {
+        $this->values = array('id');
+        return parent::select($this->table, $this->column, $this->values, $id);
+    }
 }

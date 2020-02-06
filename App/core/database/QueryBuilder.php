@@ -50,4 +50,15 @@ class QueryBuilder
     $stmt = $this->pdo->prepare("UPDATE ${table} SET ${str} WHERE ${check} ='{$hash}'");
     return $stmt;
     }
+
+    public function deleteAll($table, $name, $value)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM ${table} WHERE ${name} = '${value}'");
+        return $stmt;
+    }
+    public function delete($table, $name1, $value1, $name2, $value2)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM ${table} WHERE ${name1} = '${value1}' and ${name2} = '${value2}'");
+        return $stmt;
+    }
 }

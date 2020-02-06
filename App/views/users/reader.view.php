@@ -14,7 +14,7 @@ header("location:/");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
     
-    <title>Document</title>
+    <title>Reader Dashboard</title>
 </head>
 <body>
 <?php require "views/users/navbar.reader.view.php";
