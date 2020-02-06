@@ -26,7 +26,7 @@ if (isset($_POST['add'])) {
         $uploadOk = 0;
     }
 
-    if ($_FILES["cover_image"]["size"] > 500000) {
+    if ($_FILES["cover_image"]["size"] > 800000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }

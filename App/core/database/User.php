@@ -76,7 +76,7 @@ class User extends Login
   {
 
     $table = 'users';
-    $column = array('name');
+    $column = array('name','email','registration_date');
     $values = array('user_type');
     $stmt = parent::select($table, $column, $values, $type);
     $stmt->execute();

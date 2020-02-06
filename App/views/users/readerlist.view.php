@@ -6,29 +6,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List Of Readers</title>
+    <title>Reader's List</title>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
 </head>
 <body>
-<div style="padding-top: 100px ; padding-left: 200px ; padding-right: 200px">
-<ul class="list-group">
-
-<!--implement php logic for dynamic iteration of list according to database-->
-  <?php
-  foreach($list as $key=>$value):?>
-  <li class="list-group-item"><?php print_r($value['name']) ?></li>
-
-  <?php endforeach;?>
-  
-</ul>
-</div>
+<div id="content" class="p-4 p-md-5 pt-5" style="padding: 5rem;">
+    <h2 class="mb-4" style="color: darkcyan;"><?= "Our Visitors"  ?> </h2>
     
+    
+    <div class="table-responsive">
+        <table class="table"  id="myTable">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    
+                    <th scope="col">Created On</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $i = 1;
+                foreach ($list as $row) : ?>
+                    <tr>
+                        <th scope="row"><?php echo $i++; ?></th>
+                        <td><?php echo ($row['name']); ?></td>
+                        <td><?php echo ($row['email']); ?></td>
+                        
+                        <td><?php echo ($row['registration_date']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
+
+</div>
 </body>
-</html>
+</html> 
 

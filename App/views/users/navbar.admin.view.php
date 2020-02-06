@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #dde0e2!important;">
   <a class="navbar-brand" href="admin">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,11 +13,11 @@
       
       
       <li class="nav-item mx-3">
-        <a class="nav-link" href="booklist">List Of Books </a>
+        <a class="nav-link" href="booklist">Manage Books</a>
       </li>
       
       <li class="nav-item mx-3">
-        <a class="nav-link" href="userlist">List Of Readers</a>
+        <a class="nav-link" href="userlist">Readers</a>
       </li>
 
     </ul>

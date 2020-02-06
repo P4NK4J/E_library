@@ -23,7 +23,7 @@ $categories = $app['categories']->categoryList('categories', $column);
 
 </head>
 
-<body style='padding-top: 0px; padding-bottom: 200px'>
+<body style='padding-top: 0px; padding-bottom: 120px'>
 
     <?php require "views/users/navbar.admin.view.php"; ?>
     <div class="container" style="padding-top: 20px;">
@@ -39,18 +39,22 @@ $categories = $app['categories']->categoryList('categories', $column);
                         <form action="" method="post"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Name</label>
+                                <span style="color:red">*</span>
                                 <input type="text" required name="bookname" class="form-control" id="bookname" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label>Author</label>
+                                <span style="color:red">*</span>
                                 <input type="text" required name="author" id="author" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label>Edition</label>
+                                <span style="color:red">*</span>
                                 <input type="text" required name="edition" id="edition" class="form-control" placeholder="">
                             </div>
-                            <div class="form-group" >Book Categories:
+                            <div class="form-group" >Book Categories:<span style="color:red">*</span>
                                 <div class="input-group" style="margin-top: 15px;">
+                                
                                 <?php $i = 1;?>
                                      <?php foreach ($categories as $key) :
                                 
@@ -65,6 +69,7 @@ $categories = $app['categories']->categoryList('categories', $column);
                             </div>
                             <div class="form-group">
                                 <label>Book Cover Image </label>
+                                <span style="color:red">*</span>
                                 <input type="file" required value="Upload Image" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
                             </div>
 
