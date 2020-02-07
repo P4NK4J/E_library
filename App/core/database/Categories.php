@@ -31,8 +31,11 @@ class Categories extends QueryBuilder
     }
 
     public function addCat($name)
-    {
-        return parent::insert($this->table,'name',$name);
+    {   
+        $column = array('name');
+        $name = "'".$name."'";
+        $value = array($name);
+        return parent::insert($this->table,$column,$value);
     }
 
     public function selectCat($id)

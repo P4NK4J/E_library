@@ -15,6 +15,8 @@ $router->define([
 
     'addbook' => 'controller/books/AddBookController.php',
 
+    'editview' => 'views/books/edit.view.php',
+
     'edit' => 'controller/books/EditBookController.php',
 
     'admin' => 'views/users/admin.view.php',
@@ -27,7 +29,9 @@ $router->define([
 
     'read' => 'views/books/already.read.view.php',
 
-    'booklist' => 'views/books/list.view.php',
+    'booklist' => 'views/books/modify.view.php',
+
+    'collection' => 'views/books/collection.view.php',
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',
     
@@ -36,5 +40,9 @@ $router->define([
     'deleteuser' => 'controller/DeleteUserController.php',
 
     'deletecategory' => 'controller/DeleteCategoryController.php',
+
+    'deletebook' => 'controller/books/DeleteBookController.php',
+
+    'addcat' => 'controller/AddCategoryController.php',
 
 ]);

@@ -11,8 +11,8 @@ class Book extends QueryBuilder
     }
 
     public function bookList()
-    {   
-        $column = array('id', 'name', 'author', 'edition', 'cover_image','date_added');
+    {
+        $column = array('id', 'name', 'author', 'edition', 'cover_image', 'date_added');
         return parent::record($this->table, $column);
     }
 
@@ -24,12 +24,10 @@ class Book extends QueryBuilder
         $values[2] = "'" . trim($_POST['edition']) . "'";
         $values[3] = "'" . trim(basename($_FILES["cover_image"]["name"])) . "'";
         array_shift($this->column);
-        // var_dump($this->column,$values);
-        // die();
         $stmt = parent::insert($this->table, $this->column, $values);
-        
 
-        
+
+
         $stmt->execute();
 
         $book_id = $this->pdo->lastInsertId();
@@ -59,5 +57,40 @@ class Book extends QueryBuilder
         $stmt = parent::select('categories', $this->column, $this->values, $cat_name);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function updateBook($bnames, $bvalues, $id)
+    {
+        $i = 0;
+        $update = [];
+        while (isset($bnames[$i])) {
+            $update += [$bnames[$i] => $bvalues[$i]];
+            $i++;
+        }
+        return (parent::update($this->table, $update, 'id', $id));
+    }
+    public function fetchCat($book_id)
+    {
+        $this->column = array('category_id');
+        $this->values = array('book_id');
+        return parent::select(' bridge', $this->column, $this->values, $book_id);
+    }
+
+    public function selectBook($id)
+    {
+        $this->values = array('id');
+        return parent::select($this->table, $this->column, $this->values, $id);
+    }
+
+    public function deleteBook($id)
+    {
+        $this->deleteAllCategories($id);
+        return parent::deleteAll($this->table, 'id', $id);
+    }
+
+    public function deleteAllCategories($book_id)
+    {
+        return parent::deleteAll('bridge', 'book_id', $book_id);
     }
 }

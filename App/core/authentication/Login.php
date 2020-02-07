@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Login extends QueryBuilder
 
 {
@@ -12,8 +10,6 @@ class Login extends QueryBuilder
         $this->column = array('name', 'email', 'password', 'user_type', 'activated');
         $this->values = array('name', 'email', 'password');
     }
-
-
 
     public function userLogin($email)
     {
@@ -40,16 +36,11 @@ class Login extends QueryBuilder
                     if ($stmt->rowcount() == 1) {
 
                         if ($row = $stmt->fetch()) {
-
-
-
                             $hashed_password = $row["password"];
 
                             if (password_verify($password, $hashed_password)) {
                                
                                 if ($row['activated']) {
-
-                                    //session_start();
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION["name"] = $row['name'];
                                     $_SESSION["email"] = $row['email'];
@@ -91,7 +82,7 @@ class Login extends QueryBuilder
             $count = $stmt->rowcount();
             if ($count == 1) {
 
-                $row = $stmt->fetch();  //row corresponding to the user in database
+                $row = $stmt->fetch();  
                 session_start();
                 $_SESSION["loggedin"] = true;
                 $_SESSION["name"] = $row['name'];
@@ -99,7 +90,7 @@ class Login extends QueryBuilder
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['user_type'] = $row['user_type'];
 
-                if ($row['user_type'] == 'admin') {      // user_type column in database
+                if ($row['user_type'] == 'admin') {     
                     header('location:/admin');
                 } else {
                     header('location:/reader');
@@ -126,8 +117,6 @@ class Login extends QueryBuilder
         }
     }
 
-
-
     public function gAuth()
     {
        require "gmailconfig.php";
@@ -135,14 +124,9 @@ class Login extends QueryBuilder
 
         if (isset($_GET['code'])) {
             $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
-            
-            
-            $gClient->setAccessToken($token['access_token']);
-            
-            
-
-            $oAuth = new Google_Service_Oauth2($gClient); //profile informatiom
-            $userData = $oAuth->userinfo_v2_me->get();   // full info of user available in gmail account.
+            $gClient->setAccessToken($token['access_token']); 
+            $oAuth = new Google_Service_Oauth2($gClient); 
+            $userData = $oAuth->userinfo_v2_me->get();   
             return $userData;
         } else {
             return  $gClient->createAuthUrl();
