@@ -72,13 +72,21 @@ class Book extends QueryBuilder
     }
     public function fetchCat($book_id)
     {
-        $this->column = array('category_id');
+        $column = array('category_id');
         $this->values = array('book_id');
-        return parent::select(' bridge', $this->column, $this->values, $book_id);
+        return parent::select(' bridge', $column, $this->values, $book_id);
+    }
+
+    public function fetchBooks($id)
+    {
+        $column = array('book_id');
+        $this->values = array('user_id');
+        return parent::select('userbridge', $column, $this->values, $id);
     }
 
     public function selectBook($id)
-    {
+    {   
+        
         $this->values = array('id');
         return parent::select($this->table, $this->column, $this->values, $id);
     }
@@ -92,5 +100,20 @@ class Book extends QueryBuilder
     public function deleteAllCategories($book_id)
     {
         return parent::deleteAll('bridge', 'book_id', $book_id);
+    }
+
+    public function readBook($uid, $bid)
+    {
+        $this->column = array('user_id', 'book_id');
+        $user_id = "'" . $uid . "'";
+        $book_id = "'" . $bid . "'";
+        $this->values = array($user_id, $book_id);
+        $insert = parent::insert('userbridge', $this->column, $this->values);
+        $insert->execute();
+    }
+    public function unreadBook($user_id, $book_id)
+    {
+        $delete = parent::delete('userbridge', 'user_id', $user_id, 'book_id', $book_id);
+        $delete->execute();
     }
 }

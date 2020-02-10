@@ -27,7 +27,11 @@ $router->define([
 
     'login' => 'views/authentication/login.view.php',
 
-    'read' => 'views/books/already.read.view.php',
+    'readbyuser' => 'controller/books/ReadController.php',
+    
+    'unreadbyuser' => 'controller/books/UnreadController.php',
+
+    'readlist' => 'views/books/already.read.view.php',
 
     'booklist' => 'views/books/modify.view.php',
 

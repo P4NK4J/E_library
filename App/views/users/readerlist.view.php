@@ -1,5 +1,3 @@
-<?php require "views/users/navbar.admin.view.php"; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +16,16 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 </head>
 
 <body>
+    <?php require "views/users/navbar.admin.view.php"; ?>
     <div id="content" class="p-4 p-md-5 pt-5" style="padding: 5rem;">
         <h2 class="mb-4" style="color: darkcyan;"><?= "Our Visitors"  ?> </h2>
 
@@ -49,10 +53,34 @@
                             <td><?php echo ($row['email']); ?></td>
 
                             <td><?php echo ($row['registration_date']); ?></td>
-                            <td><a href="/deleteuser?id=<?php echo $row['id'];?>" onclick=" return confirm('Are you sure you want to delete this item?');"><class="card-link" style="color: red;">Delete</a></td>
+                            <td><a href="#" data-toggle="modal" data-target="#userdeletemodal<?=$i?>" class="card-link"  style="color:red;">Delete
+                                    <div class="modal fade" id="userdeletemodal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="ModalLabel2" style="color: darkcyan;">Remove user</h5>
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="color:black;">User will no longer be able to access E_Library. </div>
+
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+                                                    <a href="/deleteuser?id=<?php echo $row['id']; ?>"  id="exit" class="btn btn-danger">Delete</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                </a></td>
 
                         </tr>
-                    <?php endforeach; ?>
+                    <?php $i++; endforeach; ?>
                 </tbody>
             </table>
         </div>

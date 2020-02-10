@@ -90,7 +90,7 @@ if ($_SESSION['user_type'] != 'reader')
                                     <?php endforeach;
                                     ?>
                                 </p>
-                                <?php $booksRead = $app['database']->fetchBooks($uid);
+                                <?php $booksRead = $app['database_book']->fetchBooks($uid);
                                 $booksRead->execute();
                                 $ch = $booksRead->fetchAll(PDO::FETCH_ASSOC);
                                 $check = null;
@@ -100,8 +100,8 @@ if ($_SESSION['user_type'] != 'reader')
                                         $check = 'checked';
                                     }
                                 endforeach;
-                                $link = "/readbook?bid=" . $bid;
-                                $lnk = "/unreadbook?bid=" . $bid;
+                                $link = "/readbyuser?bid=" . $bid;
+                                $lnk = "/unreadbyuser?bid=" . $bid;
                                 ?>
 
                                 <div class="form-check">

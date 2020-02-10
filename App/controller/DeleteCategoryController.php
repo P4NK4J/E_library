@@ -9,10 +9,13 @@ if ($_SESSION['user_type'] != 'admin') {
 $stmt = $app['categories']->selectCat($_GET['id']);
 
 
+
+
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $delete = $app['categories']->deleteCat($_GET['id']);
+
 
     
     $delete->execute();
