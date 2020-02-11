@@ -1,17 +1,21 @@
 <?php
 $router->define([
 
-    '' => 'controller/authentication/LoginController.php',
+    '' => 'views/authentication/login.view.php',
 
     'logout' => 'controller/authentication/LogoutController.php',
 
     'signup' => 'controller/authentication/SignupController.php',
+
+    'signup-form' => 'views/authentication/signup.view.php',
 
     'verify' => 'controller/authentication/VerifyRegistrationController.php',
 
     'GmailLogin.php' => 'controller/authentication/GmailLoginController.php',
 
     'books' => 'controller/books/BookController.php',
+
+    'add' =>  'views/books/add.view.php',
 
     'addbook' => 'controller/books/AddBookController.php',
 
@@ -23,9 +27,9 @@ $router->define([
 
     'reader' => 'views/users/reader.view.php',
     
-    'userlist' => 'controller/UserListController.php',
+    'userlist' => 'views/users/readerlist.view.php',
 
-    'login' => 'views/authentication/login.view.php',
+    'login' => 'controller/authentication/LoginController.php',
 
     'readbyuser' => 'controller/books/ReadController.php',
     

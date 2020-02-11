@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($_SESSION['user_type'] != 'reader')
 
-    header("location:/");?>
+    header("location:/login");?>
 
 <!DOCTYPE html>
 <html lang="en">

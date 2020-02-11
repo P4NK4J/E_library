@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($_SESSION['user_type'] != 'admin')
 
-    header("location:/");
+    header("location:/login");
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@ if ($_SESSION['user_type'] != 'admin')
     <title> Modify Books</title>
 </head>
 
-<body>
+<body style="background-image:url(Resources/Images/background.jpg); background-size:cover;">
     <?php require "views/users/navbar.admin.view.php"; ?>
 
     <script>
@@ -55,6 +55,7 @@ if ($_SESSION['user_type'] != 'admin')
 
         <div class="card-deck" id="mybooks" style="margin-left: 40px; margin-right: 40px; margin-bottom: 200px;">
             <?php $books = $app['database_book']->bookList();
+            
             $cat_tag = $app['database_book']->listBookss();
             $i = -1;
             foreach ($books as $row) :

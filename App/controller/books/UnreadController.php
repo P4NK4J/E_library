@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE)
     session_start();
 
 if ($_SESSION['user_type'] != 'reader')
-    header("location:/");
+    header("location:/login");
     
 if (isset($_SESSION['id'])) {
     $uid = $_SESSION['id'];

@@ -72,4 +72,4 @@ if (isset($_POST['add'])) {
 }
 
 
-require 'views/books/add.view.php';
+

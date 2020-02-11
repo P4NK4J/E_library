@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['user_type'] != 'reader')
 {
-header("location:/");
+header("location:/login");
 }
 ?>
 

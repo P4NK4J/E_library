@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php $list = $app['database']->userList('reader'); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -53,8 +54,8 @@
                             <td><?php echo ($row['email']); ?></td>
 
                             <td><?php echo ($row['registration_date']); ?></td>
-                            <td><a href="#" data-toggle="modal" data-target="#userdeletemodal<?=$i?>" class="card-link"  style="color:red;">Delete
-                                    <div class="modal fade" id="userdeletemodal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
+                            <td><a href="#" data-toggle="modal" data-target="#userdeletemodal<?= $i ?>" class="card-link" style="color:red;">Delete
+                                    <div class="modal fade" id="userdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -69,7 +70,7 @@
                                                 <div class="modal-footer">
 
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
-                                                    <a href="/deleteuser?id=<?php echo $row['id']; ?>"  id="exit" class="btn btn-danger">Delete</a>
+                                                    <a href="/deleteuser?id=<?php echo $row['id']; ?>" id="exit" class="btn btn-danger">Delete</a>
                                                 </div>
 
                                             </div>
@@ -80,7 +81,8 @@
                                 </a></td>
 
                         </tr>
-                    <?php $i++; endforeach; ?>
+                    <?php $i++;
+                    endforeach; ?>
                 </tbody>
             </table>
         </div>

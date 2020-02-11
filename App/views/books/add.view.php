@@ -36,7 +36,7 @@ $categories = $app['categories']->categoryList('categories', $column);
                                 <h2>Enter Details</h2>
                             </div>
                         </div>
-                        <form action="" method="post"  enctype="multipart/form-data">
+                        <form action="addbook" method="post"  enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Name</label>
                                 <span style="color:red">*</span>

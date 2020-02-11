@@ -8,7 +8,7 @@ if (isset($results)) {
 
     echo "<script>window.setTimeout(function() {
         alert('Account has been verified');
-    window.location='/';},0);</script>";
+    window.location='/login';},0);</script>";
 } else {
     echo "Please verify your account";
 }
