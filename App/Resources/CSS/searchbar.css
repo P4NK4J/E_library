@@ -3,7 +3,7 @@
   margin-bottom: auto;
   margin-top: auto;
   height: 60px;
-  background-color: rgba(197, 199, 196, 0.6);
+  background-color:rgba(21,32,43,1);
   border-radius: 30px;
   padding: 10px;
   max-width: 50%;
@@ -11,7 +11,7 @@
 }
 
 .search_input {
-  color: black;
+  color: white;
   border: 0;
   outline: 0;
   background: none;
@@ -26,15 +26,15 @@
 }
 
 .searchbar:hover > .search_input {
-  width: 100px;
-  caret-color: black;
+ width: 200px;
+  caret-color:white;
   
   
 }
 
 .searchbar:hover > .search_icon {
-  background: rgb(201, 207, 207);
-  color: black
+  background:darkcyan;
+  color: white
   ;
 }
 
@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 

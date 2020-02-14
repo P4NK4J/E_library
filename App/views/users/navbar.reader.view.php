@@ -1,77 +1,89 @@
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-   
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #dde0e2!important;">
-  <a class="navbar-brand" href="reader">Home</a>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  $('#navbar .nav-item a').on('click', function() {
+    $('#navbar .navbar-nav').find('a.active').removeClass('active');
+    $(this).parent('a').addClass('active');
+  });
+</script>
+<style>
+  .mystyle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+
+
+
+
+  }
+
+  .hoverstyle:hover{
+
+
+    background-color: #162D40;
+    color: #1da1f2 !important;
+    border-radius: 10px;
+  
+  }
+  
+
+</style>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark text-center font-weight-bold" id="navbar" style="background-color:rgba(21,32,43,1);">
+  <a class="nav-link ml-5  active  text-white mx-4 mystyle hoverstyle" href="collection">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-    <li class="nav-item mx-3">
-        <a class="nav-link" href="collection">Collection</a>
-      </li>
-     
-      
-    
-      <li class="nav-item mx-3">
-        <a class="nav-link" href="readlist">Read by me</a>
-      </li>
-     
-    </ul>
-    
-    <span class="nav-item mx-5">
-      <button type="button" class="btn" style="padding: 2px; background-color:#dde0e2" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-sign-out" style="font-size: 40px;" aria-hidden="true"></i></button>
-      <script>
-        $(document).ready(function() {
-          $(".btn").click(function() {
-            $("#myModal").modal('show');
-          });
-        });
-      </script>
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel" style="color: darkcyan;">Logout</h5>
 
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+
+
+      <li class="nav-item mx-5">
+        <a class="nav-link mystyle hoverstyle text-white" href="readlist">Read by me</a>
+      </li>
+
+    </ul>
+
+    <span class="nav-item mx-5">
+      <button type="button" class="btn mystyle hoverstyle text-white font-weight-bold " data-toggle="modal" data-target="#exampleModal2">Logout</button>
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog"  role="document">
+          <div class="modal-content" style="background-color:rgba(21,32,43,1);">
+            <div class="modal-header text-white">
+              <h5 class="modal-title" id="exampleModalLabel2">Logout</h5>
+
+              <button type="button" style="color:white;" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">Once you exit, the session will be terminated. Are you sure ??</div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Keep me Logged In</button>
-            <a href="logout" class="btn btn-danger">Exit Anyway</button></a>
+            <div class="modal-body" style="color:#1d96c4; font-size:15px;" >Once you exit, the session will be terminated. Are you sure ??</div>
+
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Keep me Logged In</button>
+              <a href="logout" id="exit" class="btn btn-danger">Exit Anyway</a>
+            </div>
+
           </div>
-          
         </div>
-      </div>
 
     </span>
+
+
   </div>
 </nav>
-    
-</body>
-</html>
-
-

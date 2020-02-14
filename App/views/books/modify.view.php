@@ -6,7 +6,13 @@ if (session_status() == PHP_SESSION_NONE) {
 if ($_SESSION['user_type'] != 'admin')
 
     header("location:/login");
+
+$column = array('id', 'name');
+$categories = $app['categories']->categoryList('categories', $column);
+
+
 ?>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +25,7 @@ if ($_SESSION['user_type'] != 'admin')
     <title> Modify Books</title>
 </head>
 
-<body style="background-image:url(Resources/Images/background.jpg); background-size:cover;">
+<body style="background-color: rgba(101,157,189,0.4);">
     <?php require "views/users/navbar.admin.view.php"; ?>
 
     <script>
@@ -40,87 +46,162 @@ if ($_SESSION['user_type'] != 'admin')
         }
     </script>
     <link rel="stylesheet" href="Resources/CSS/searchbar.css">
+    <link rel="stylesheet" href="Resources/CSS/floating button.css">
 
     <div id="content" class="p-4 p-md-5 pt-5">
 
 
-        <div class="searchbar" style="float: right; width: 350px;">
+        <div class="searchbar mt-4 mr-4" style="float: right; max-width: 100%;">
 
 
-            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+
+            <input class="search_input  " type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
 
-        <h1 class="mb-4" style="color: darkcyan;">Our Collection</h1>
+        <div class="row mt-4">
 
-        <div class="card-deck" id="mybooks" style="margin-left: 40px; margin-right: 40px; margin-bottom: 200px;">
-            <?php $books = $app['database_book']->bookList();
-            
-            $cat_tag = $app['database_book']->listBookss();
-            $i = -1;
-            foreach ($books as $row) :
-                $i++;
-            ?>
-                <div class="card-column" style="padding-left: 10px; padding-right: 10px; padding-top: 30px;">
-                    <br>
-                    <div class="card h-100" style="width: 15rem; box-shadow: 0 0 4px;">
-                        <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 19rem; ">
-                        <div class="card-body flex-fill " style="background-color: #f1f5f5; ">
-                            <h6 class="card-title">
-
-                                <?php echo ($row['name']);
-                                ?>
-                                </h5>
-
-                                <p class="card-text">
-                                    <?php echo "Added On: {$row['date_added']}"; ?>
-                                </p>
-                                <p class="card-text">
-
-                                    <?php
-                                    foreach ($cat_tag[$i] as $key) :
-                                        $cat_name = $key['category_id'];
-                                        $stmt = $app['database_book']->catName($cat_name);  ?>
-                                        <span class="badge" style="cursor: pointer; background-color: gainsboro;">
-                                            <?php
-                                            echo $stmt['name'];
-                                            ?>
-                                        </span>
-                                    <?php endforeach;
-                                    ?>
-                                </p>
-
-                                <a href="editview?bid=<?php echo $row['id'] ?>" class="card-link" style="color: green;">Edit</a>
-
-                                <a href="#" data-toggle="modal" data-target="#bookdeletemodal<?= $i ?>" class="card-link" style="color:red;">Delete</a>
-                                <div class="modal fade" id="bookdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel2" style="color: darkcyan;">Remove from collection</h5>
-
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body" style="color:black;">Please confirm the deletion of this book</div>
-
-                                            <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
-                                                <a href="deletebook?book_id=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+            <h2 class=" font-weight-bolder " style="color: darkcyan;font-size:40px; margin-left:30px;"><?= "Our Collection"  ?></h2>
+            <button class="kc_fab_main_btn ml-5 mr-4 mb-5 " data-toggle="modal" data-target="#bookmodal"><i class="fa fa-plus"></i></button>
 
         </div>
+        <div class="modal fade" id="bookmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: rgba(21,32,43,1);">
+                        <h3 class="modal-title text-white" id="exampleModalLabel">Add a Book</h3>
+
+                        <button type="button" style="color:white;" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="background-color: rgba(21,32,43,1);">
+                        <div class="myform form text-white" style="background-color: rgba(21,32,43,1);">
+                            <div class="logo mb-3">
+
+                            </div>
+                        </div>
+                        <form action="addbook" method="post" class="ml-3 mr-3" enctype="multipart/form-data">
+                            <div class="form-group ">
+                                <label style="color:#1d96e1;">Name</label>
+                                <span style="color:red">*</span>
+                                <input type="text" required name="bookname" class="form-control" id="bookname" style="background-color:#192734;color:white;border-color:#1d96e1" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label style="color:#1d96e1;">Author</label>
+                                <span style="color:red">*</span>
+                                <input type="text" required name="author" id="author" class="form-control" style="background-color:#192734;color:white;border-color:#1d96e1" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label style="color:#1d96e1;">Edition</label>
+                                <span style="color:red">*</span>
+                                <input type="text" required name="edition" id="edition" class="form-control" style="background-color:#192734;color:white;border-color:#1d96e1" placeholder="">
+                            </div>
+                            <div class="form-group text-white"><span style="color:#1d96e1;">Book Categories:</span><span style="color:red">*</span>
+                                <div class="input-group" style="margin-top: 15px;">
+                                    <div class="row">
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($categories as $key) :
+
+                                        ?>
+
+                                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-6 col-xl-4">
+                                                <label for="<?php $key['id'] ?>">
+                                                    <input type="checkbox" style="background-color:#192734;color:white;border-color:#1d96e1" class="mr-1" value=<?php echo $key['id'] ?> name=<?php echo $i ?>>
+                                                    <?php echo ($key['name']);
+                                                    $i++; ?>
+                                                </label>
+                                            </div>
+
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="color:#1d96e1;">Book Cover Image </label>
+                                <span style="color:red">*</span>
+                                <input type="file" required value="Upload Image" style="background-color:#192734;color:white;border-color:#1d96e1;padding-bottom: 35px;" name="cover_image" id="cover_image" class="form-control" placeholder="">
+                            </div>
+
+                            <div class="col-md-12 text-center" style="padding-top:15px;">
+                                <button type="submit" name="add" class="btn btn-block mybtn font-weight-bold btn-primary tx-tfm">Done</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-deck " id="mybooks" style="margin-bottom: 200px; margin-left: 60px;margin-right:0px;">
+        <?php $books = $app['database_book']->bookList();
+
+        $cat_tag = $app['database_book']->listBookss();
+        $i = -1;
+        foreach ($books as $row) :
+            $i++;
+        ?>
+            <div class="card-column card-group" style="padding-left: 10px;">
+                <br>
+                <div class="card" style="width: 15rem; margin-right:50px;box-shadow: 0 0 4px;">
+                    <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 20rem; ">
+                    <div class="card-body flex-fill " style="background-color: #f1f5f5; ">
+                        <h6 class="card-title">
+
+                            <?php echo ($row['name']);
+                            ?>
+                            </h5>
+
+                            <p class="card-text">
+                                <?php echo "Added On: {$row['date_added']}"; ?>
+                            </p>
+                            <p class="card-text">
+
+                                <?php
+                                foreach ($cat_tag[$i] as $key) :
+                                    $cat_name = $key['category_id'];
+                                    $stmt = $app['database_book']->catName($cat_name);  ?>
+                                    <span class="badge" style="cursor: pointer; background-color: gainsboro;">
+                                        <?php
+                                        echo $stmt['name'];
+                                        ?>
+                                    </span>
+                                <?php endforeach;
+                                ?>
+                            </p>
+
+                            <a href="editview?bid=<?php echo $row['id'] ?>" class="card-link" style="color: green;">Edit</a>
+
+                            <a href="#" data-toggle="modal" data-target="#bookdeletemodal<?= $i ?>" class="card-link" style="color:red;">Delete</a>
+                            <div class="modal fade" id="bookdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="ModalLabel2" style="color: darkcyan;">Remove from collection</h5>
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="color:black;">Please confirm the deletion of this book</div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+                                            <a href="deletebook?book_id=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+    </div>
     </div>
     </div>
 

@@ -30,18 +30,18 @@
 
 </head>
 
-<body>
-<body style="background-image:url(Resources/Images/background.jpg); background-size:cover;">
-   <div class="container-fluid px-md-5 mx-0" style="margin-top: 10px; margin-bottom: 150px;">
+
+<body style="background-image:url(Resources/Images/background_color.jpg); background-size:cover; padding:0;padding-top: 33px;">
+   <div class="container-fluid px-md-5">
       <div class="row mx-lg-3 mx-0 px-0">
-         <div class="col text-center text-md-left mb-5">
-            <h2 class="display-4 font-weight-bold text-white " style="text-shadow:5px 5px 10px #000;">Welcome to E-Library</h2>
-            <i><h6 class="mt-4" style="color:#fff;font-weight:bolder;font-size:1.8em;font-family:Times New Roman;text-shadow:5px 5px 10px #000;">&ldquo;Keys to the past.....gateway to the future &rdquo;</h6></i>
+         <div class="col text-center text-md-left mb-5 mt-2">
+            <h2 class="display-4 font-weight-bold text-white " style="text-shadow:5px 5px 10px #000;font-family: 'Open Sans', sans-serif;">Welcome to E-Library</h2>
+            <i><h6 class="mt-4" style="color:#fff;font-weight:bolder;font-size:1.8em;font-family:Times New Roman;">&ldquo;Keys to the past.....gateway to the future &rdquo;</h6></i>
          </div>
          <div class="offset-lg-4 offset-sm-1 col-md-6 col-lg-4">
             <div id="first">
-               <div class="myform form " style="background-color: rgb(20,20,20,0.5);">
-                  <div class="logo mb-3">
+               <div class="myform form mt-4" style="background-color: rgb(20,20,20,0.5);">
+                  <div class="logo mb-0 ">
                      <div class="col-md-12 text-center">
                         <h1 style="color: white;">Signup</h1>
                      </div>
@@ -84,7 +84,7 @@
 
 
                   </div>
-                  <div class="col-md-14 text-center mb-3 mt-5">
+                  <div class="col-md-14 text-center mb-3 mt-4">
                      <button type="submit" name="signup" id="submit"  class=" btn btn-block mybtn btn-primary tx-tfm">Get started</button>
 
                      <div style="color: red; margin-top: 10px;" id="error_pass"></div>

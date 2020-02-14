@@ -44,40 +44,44 @@ foreach ($ch as $key) {
 
 </head>
 
-<body style='padding-top: 0px; padding-bottom: 120px'>
+<body style="padding-top:0px;padding-bottom: 120px ;background-color:rgba(101,157,189,0.4);">
 
 
-    <div class="container" style="padding-top: 20px;">
+    <div class="container" style="padding-top: 60px;">
         <div class="row">
-            <div class="col-md-5 mx-auto">
+            <div class="col-md-6 col-sm-6 col-lg-6 mx-auto">
                 <div id="first">
-                    <div class="myform form ">
+                    <div class="myform form text-white" style="background-color: rgba(21,32,43,1);">
                         <div class="logo mb-3">
                             <div class="col-md-12 text-center">
                                 <h2>Edit Details</h2>
                             </div>
                         </div>
-                        <form action="edit" method="post" enctype="multipart/form-data">
+                        <form action="edit" method="post" class="ml-3 mr-3" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label style="color:#1d96e1;">Name</label>
                                 <span style="color:red">*</span>
-                                <input type="text" required value="<?php echo $book["name"]; ?>" name="bookname" class="form-control" id="bookname" placeholder="">
+                                <input type="text" style="background-color:rgba(21,32,43,1);color:white;border-color:#1d96e1;"  value="<?php echo $book["name"]; ?>" name="bookname" class="form-control" id="bookname" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label>Author</label>
+                                <label style="color:#1d96e1;">Author</label>
                                 <span style="color:red">*</span>
-                                <input type="text" required value="<?php echo $book["author"]; ?>" name="author" id="author" class="form-control" placeholder="">
+                                <input type="text" style="background-color:rgba(21,32,43,1);color:white;border-color:#1d96e1;"  value="<?php echo $book["author"]; ?>" name="author" id="author" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label>Edition</label>
+                                <label style="color:#1d96e1;">Edition</label>
                                 <span style="color:red">*</span>
-                                <input type="text" required value="<?php echo $book["edition"]; ?>" name="edition" id="edition" class="form-control" placeholder="">
+                                <input type="text" style="background-color:rgba(21,32,43,1);color:white;border-color:#1d96e1;"  value="<?php echo $book["edition"]; ?>" name="edition" id="edition" class="form-control" placeholder="">
                             </div>
-                            <div class="form-group">Book Categories:<span style="color:red">*</span>
+                            <div class="form-group" ><span style="color:#1d96e1;">Book Categories:</span><span style="color:red">*</span>
                                 <div class="input-group" style="margin-top: 15px;">
+                                    <div class="row">
 
                                     <?php $i = 1; ?>
                                     <?php foreach ($categories as $key) :
+
+                                        
+
 
                                         $check = null;
                                         $cid = $key['id'];
@@ -85,25 +89,28 @@ foreach ($ch as $key) {
                                             $check = 'checked';
                                         }
 
-                                    ?>
-                                        <label for="<?php $key['id'] ?>" class="mr-3">
+                                    ?>  
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-6 col-xl-4">
+                                        <label for="<?php $key['id'] ?>">
                                             <input type="checkbox" <?php echo $check; ?> class="mr-1" value=<?php echo $key['id']; ?> name=<?php echo $i; ?>>
                                             <?php echo ($key['name']);
                                             $i++; ?>
                                         </label>
+                                    </div>
                                     <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Book Cover Image </label>
+                                <label style="color:#1d96e1;">Book Cover Image </label>
                                 <span style="color:red">*</span>
-                                <input type="file" value="<?php echo $book["cover_image"]; ?>" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
+                                <input type="file" style="background-color:rgba(21,32,43,1);color:white;border-color:#1d96e1;padding-bottom:35px;" value="<?php echo $book["cover_image"]; ?>" name="cover_image" id="cover_image" class="form-control" placeholder="" style="padding-bottom: 35px;">
                             </div>
 
                             <?php $bid = $_GET['bid']; ?>
                             <input type="hidden" name="bid" value="<?php echo $bid; ?>">
 
-                            <div class="col-md-12 text-center ">
+                            <div class="col-md-12 text-center " style="padding-top:15px;">
                                 <button type="submit" name="edit" class=" btn btn-block mybtn btn-primary tx-tfm">Done</button>
                             </div>
                         </form>
