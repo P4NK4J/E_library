@@ -40,6 +40,7 @@
 
 .search_icon {
   height: 40px;
+  font-size: 20px;
   width: 40px;
   float: right;
   display: flex;

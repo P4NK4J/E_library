@@ -12,7 +12,9 @@ $categories = $app['categories']->categoryList('categories', $column);
 
 
 ?>
+<link rel="stylesheet" href="Resources/CSS/footer.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,14 +57,14 @@ $categories = $app['categories']->categoryList('categories', $column);
 
 
 
-            <input class="search_input  " type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+            <input class="search_input " type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4 ">
 
-            <h2 class=" font-weight-bolder " style="color: darkcyan;font-size:40px; margin-left:30px;"><?= "Our Collection"  ?></h2>
-            <button class="kc_fab_main_btn ml-5 mr-4 mb-5 " data-toggle="modal" data-target="#bookmodal"><i class="fa fa-plus"></i></button>
+            <h2 class=" font-weight-bolder " style="color: darkcyan;font-size:50px; margin-left:30px;"><?= "Our Collection"  ?></h2>
+            <button class="kc_fab_main_btn ml-5 mr-4 "  data-toggle="modal" data-target="#bookmodal"><i class="fa fa-plus"></i></button>
 
         </div>
         <div class="modal fade" id="bookmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,7 +97,7 @@ $categories = $app['categories']->categoryList('categories', $column);
                             <div class="form-group">
                                 <label style="color:#1d96e1;">Edition</label>
                                 <span style="color:red">*</span>
-                                <input type="text" required name="edition" id="edition" class="form-control" style="background-color:#192734;color:white;border-color:#1d96e1" placeholder="">
+                                <input type="text" name="edition" id="edition" class="form-control" style="background-color:#192734;color:white;border-color:#1d96e1" placeholder="">
                             </div>
                             <div class="form-group text-white"><span style="color:#1d96e1;">Book Categories:</span><span style="color:red">*</span>
                                 <div class="input-group" style="margin-top: 15px;">
@@ -134,7 +136,7 @@ $categories = $app['categories']->categoryList('categories', $column);
     </div>
 
 
-    <div class="card-deck " id="mybooks" style="margin-bottom: 200px; margin-left: 60px;margin-right:0px;">
+    <div class="card-deck  " id="mybooks" style="margin-bottom: 50px; margin-left: 60px;margin-right:0px;">
         <?php $books = $app['database_book']->bookList();
 
         $cat_tag = $app['database_book']->listBookss();
@@ -142,11 +144,11 @@ $categories = $app['categories']->categoryList('categories', $column);
         foreach ($books as $row) :
             $i++;
         ?>
-            <div class="card-column card-group" style="padding-left: 10px;">
+            <div class="card-column card-group" style="padding-left: 10px; padding-top: 60px;">
                 <br>
-                <div class="card" style="width: 15rem; margin-right:50px;box-shadow: 0 0 4px;">
+                <div class="card" style="width: 15rem; margin-right:50px;">
                     <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 20rem; ">
-                    <div class="card-body flex-fill " style="background-color: #f1f5f5; ">
+                    <div class="card-body flex-fill " style="background-color: rgba(101,157,189,0.2); ">
                         <h6 class="card-title">
 
                             <?php echo ($row['name']);
@@ -162,7 +164,7 @@ $categories = $app['categories']->categoryList('categories', $column);
                                 foreach ($cat_tag[$i] as $key) :
                                     $cat_name = $key['category_id'];
                                     $stmt = $app['database_book']->catName($cat_name);  ?>
-                                    <span class="badge" style="cursor: pointer; background-color: gainsboro;">
+                                    <span class="badge" style="cursor:auto; background-color:rgba(21,32,430,0.1) ;">
                                         <?php
                                         echo $stmt['name'];
                                         ?>
@@ -204,6 +206,7 @@ $categories = $app['categories']->categoryList('categories', $column);
     </div>
     </div>
     </div>
+    <?php require "Resources/partials/footer.php" ?>
 
 </body>
 

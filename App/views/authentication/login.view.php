@@ -36,7 +36,7 @@ if (isset($_SESSION['loggedin']) == true) {
       <div class="row mx-lg-3 mx-0 px-0">
          <div class="col text-center text-md-left mb-5 mt-2">
             <h2 class="display-4 font-weight-bold text-white " style="text-shadow:5px 5px 10px #000;font-family: 'Open Sans', sans-serif;">Welcome to E-Library</h2>
-            <i><h6 class="mt-4" style="color:#fff;font-weight:bolder;font-size:1.8em;font-family:Times New Roman;">&ldquo;Keys to the past.....gateway to the future &rdquo;</h6></i>
+            <i><h6 class="mt-4" style="color:#fff;font-weight:bolder;font-size:1.8em;font-family:Times New Roman;">&ldquo;Catalog of books to make your journey worth &rdquo;</h6></i>
          </div>
          <div class="offset-lg-4 offset-sm-1 col-md-6 col-lg-4">
             <div id="first">
