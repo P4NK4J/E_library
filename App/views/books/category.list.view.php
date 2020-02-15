@@ -29,12 +29,13 @@ $list = $app['categories']->categoryList();
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="Resources/CSS/searchbar.css">
+    <link rel="stylesheet" href="Resources/CSS/floating button.css">
+    <link rel="stylesheet" href="Resources/CSS/footer.css">
 
-    </script>
 
 </head>
-<link rel="stylesheet" href="Resources/CSS/searchbar.css">
-<link rel="stylesheet" href="Resources/CSS/floating button.css">
+
 <script>
     function myFunction() {
         var input, filter, cards, table, h5, title, i;
@@ -55,7 +56,7 @@ $list = $app['categories']->categoryList();
 
 
 <body style="background-color: rgba(101,157,189,0.4);">
-    <div id="content" class="p-4 p-md-5 pt-4 " style="padding-right:6rem; font-family: 'Open Sans', sans-serif; ">
+    <div id="content" class="p-4 p-md-5 pt-4" style="min-height:90%; padding-right:6rem; font-family: 'Open Sans', sans-serif; ">
 
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
             <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
@@ -64,8 +65,8 @@ $list = $app['categories']->categoryList();
 
         <div class="row">
 
-            <h2 class="mb-5 font-weight-bolder " style="color: darkcyan;font-size:40px; margin-left:30px;"><?= "Category List"  ?></h2>
-             <button class="kc_fab_main_btn ml-5 mr-4 mb-5 " data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i></button>
+            <h2 class="mb-5 font-weight-bolder " style="color: darkcyan;font-size:45px; margin-left:30px;"><?= "Category List"  ?></h2>
+            <button class="kc_fab_main_btn ml-5 mr-4 mb-5 " data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i></button>
 
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,7 +84,7 @@ $list = $app['categories']->categoryList();
                             <div class="form-group">
                                 <label style="color:1d96e1;">Enter Name Here</label>
                                 <span style="color:red">*</span>
-                                <input type="text" style="background-color:rgba(21,32,43,1); border-color:#1d96e1;" required name="catname" class="form-control" placeholder="">
+                                <input type="text" style="background-color:rgba(21,32,43,1); border-color:#1d96e1;color:white;" required name="catname" class="form-control" placeholder="">
                             </div>
 
 
@@ -154,6 +155,8 @@ $list = $app['categories']->categoryList();
 
 
     </div>
+    
+<?php require "Resources/partials/footer.php" ?>
 </body>
 
 </html>

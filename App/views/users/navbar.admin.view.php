@@ -9,10 +9,24 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
-  $('#navbar .nav-item a').on('click', function() {
-    $('#navbar .navbar-nav').find('a.active').removeClass('active');
-    $(this).parent('a').addClass('active');
-  });
+  var btnContainer = document.getElementById("#navbarSupportedContent");
+
+  // Get all buttons with class="btn" inside the container
+  var btns = btnContainer.getElementsByClassName("nav-link");
+
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+
+      // If there's no active class
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+
+      // Add the active class to the current/clicked button
+      this.className += " active";
+    });
+  }
 </script>
 <style>
   .mystyle {
@@ -24,41 +38,47 @@
 
   }
 
-  .hoverstyle:hover{
+  .active {
+
+    background-color: #162D40;
+    color: #1da1f2 !important;
+    border-radius: 10px;
+  }
+
+  .hoverstyle:hover {
 
 
     background-color: #162D40;
     color: #1da1f2 !important;
     border-radius: 10px;
-  
-  }
-  
 
+  }
 </style>
 
 
 
 <nav class="navbar navbar-expand-lg navbar-dark text-center font-weight-bold" id="navbar" style="background-color:rgba(21,32,43,1);">
-  <a class="nav-link ml-5  active  text-white mx-4 mystyle hoverstyle" href="admin">Home</a>
+
+  <a class="nav-link ml-5 text-white mx-4 mystyle hoverstyle" href="admin">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 
 
-  <div class="collapse navbar-collapse " id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+    <ul class="navbar-nav   mr-auto">
 
-      
+
 
 
 
       <li class="nav-item mx-4">
-        <a class="nav-link text-white mystyle hoverstyle" href="booklist">Manage</a>
+        <a class="nav-link text-white mystyle hoverstyle " href="booklist">Manage</a>
       </li>
 
       <li class="nav-item mx-4">
-        <a class="nav-link text-white mystyle hoverstyle" href="category_list">Categories</a>
+        <a class="nav-link text-white mystyle hoverstyle " href="category_list">Categories</a>
       </li>
 
       <li class="nav-item mx-4">
@@ -69,7 +89,7 @@
     <span class="nav-item mx-5">
       <button type="button" class="btn mystyle hoverstyle text-white font-weight-bold " data-toggle="modal" data-target="#exampleModal2">Logout</button>
       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog"  role="document">
+        <div class="modal-dialog" role="document">
           <div class="modal-content" style="background-color:rgba(21,32,43,1);">
             <div class="modal-header text-white">
               <h5 class="modal-title" id="exampleModalLabel2">Logout</h5>
@@ -78,7 +98,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" style="color:#1d96c4; font-size:15px;" >Once you exit, the session will be terminated. Are you sure ??</div>
+            <div class="modal-body" style="color:#1d96c4; font-size:15px;">Once you exit, the session will be terminated. Are you sure ??</div>
 
             <div class="modal-footer">
 
@@ -92,4 +112,5 @@
     </span>
 
   </div>
+
 </nav>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%;">
 <?php
 if (session_status() == PHP_SESSION_NONE)
     session_start();
@@ -23,11 +23,12 @@ $list = $app['database']->userList('reader'); ?>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
-
+    <link rel="stylesheet" href="Resources/CSS/searchbar.css">
+    <link rel="stylesheet" href="Resources/CSS/floating button.css">
+    <link rel="stylesheet" href="Resources/CSS/footer.css">
 
 </head>
-<link rel="stylesheet" href="Resources/CSS/searchbar.css">
-<link rel="stylesheet" href="Resources/CSS/floating button.css">
+
 <script>
     function myFunction() {
         var input, filter, cards, table, h5, title, i;
@@ -46,21 +47,21 @@ $list = $app['database']->userList('reader'); ?>
     }
 </script>
 
-<body style="background-color: rgba(101,157,189,0.4);">
-    <div id="content" class="p-4 p-md-5 pt-5" style="padding-right:6rem; font-family: 'Open Sans', sans-serif;">
+<body style="background-color: rgba(101,157,189,0.4);height:100%;">
+    <div id="content" class="p-4 p-md-5 pt-5 h-100" style="padding-right:6rem; font-family: 'Open Sans', sans-serif;">
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
             <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
 
-        <h2 class="mb-5 font-weight-bolder " style="color: darkcyan;font-size:40px; margin-left:30px;"><?= "Our Visitors"  ?> </h2>
+        <h2 class="mb-5 font-weight-bolder " style="color: darkcyan;font-size:45px; margin-left:30px;"><?= "Our Visitors"  ?> </h2>
 
 
         <div class="table-responsive">
             <table class="table mx-auto" style="max-width:95.5%; background-color:rgba(101,157,189,0.4);" id="myTable">
                 <thead class="thead" style="background-color:darkcyan !important;">
                     <tr style="color:white;">
-                        <th scope="col"style="padding-left:50px;">#</th>
+                        <th scope="col" style="padding-left:50px;">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
 
@@ -114,6 +115,10 @@ $list = $app['database']->userList('reader'); ?>
 
 
     </div>
+    <?php require "Resources/partials/footer.php" ?> 
+    
 </body>
+
+
 
 </html>
