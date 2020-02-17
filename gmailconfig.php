@@ -8,8 +8,8 @@
     $gClient->setClientSecret("Od0ZPjNGOh8uvqR7XzBdi6q6");
     $gClient->setApplicationName("My Project 21920");
     $gClient->setRedirectUri("http://ec2-3-6-32-116.ap-south-1.compute.amazonaws.com/GmailLogin.php");// GmailLogin.php is defined in Routes.php
-    $gClient->addScope("https://www.googleapis.com/auth/userinfo.profile");
-    $gClient->addScope("https://www.googleapis.com/auth/userinfo.email");
+    $gClient->addScope("email");
+    $gClient->addScope("profile");
 
 
 
