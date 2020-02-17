@@ -8,7 +8,7 @@ if (isset($results)) {
 
     header("location/verified");
 
-    ;
+    
 } else {
     echo "Please verify your account";
 }
