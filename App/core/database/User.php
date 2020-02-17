@@ -37,7 +37,10 @@ class User extends Login
     $select->execute();
     if ($select->rowcount() == 0) {
       if ($password != $verify_password) {
-        echo 'Password do not match';
+        session_start();
+        $pass_err = "Password do not match";
+        $_SESSION["err"] = $pass_err;
+        header('location:/signup-form');;
       } else {
         $hash = md5(rand(0, 1000));
         $cred[4] = "'" . $hash . "'";
@@ -47,12 +50,13 @@ class User extends Login
         $lastID = $this->pdo->lastinsertID();
         $mail = new Mail();
         $mail->sendMail($lastID, $hash);
-
-        echo "You have signed up successfully,  please check your email for verification...!!";
+        header("location:/verifymsg");
       }
     } else {
-      echo "Email Id already exists. Please use different Email Id";
-    }
+      session_start();
+      $error = "Email Id already exists";
+      $_SESSION["err"] = $error; 
+      header('location:/signup-form');}
   }
 
 
@@ -62,7 +66,7 @@ class User extends Login
 
     $values = array('hash');
     $stmt = parent::select($this->table, $this->column, $values, $hash);
-    
+
     if ($stmt->execute()) {
       $count = $stmt->rowcount();
       if ($count == 1) {
@@ -76,22 +80,22 @@ class User extends Login
   {
 
     $table = 'users';
-    $column = array('id','name','email','registration_date',);
+    $column = array('id', 'name', 'email', 'registration_date',);
     $values = array('user_type');
     $stmt = parent::select($table, $column, $values, $type);
     $stmt->execute();
     $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     return $row;
   }
 
   public function deleteUser($id)
-    {
-        return parent::deleteAll($this->table, 'id', $id);
-    }
-    public function selectUser($id)
-    {
-        $this->values = array('id');
-        return parent::select($this->table, $this->column, $this->values, $id);
-    }
+  {
+    return parent::deleteAll($this->table, 'id', $id);
+  }
+  public function selectUser($id)
+  {
+    $this->values = array('id');
+    return parent::select($this->table, $this->column, $this->values, $id);
+  }
 }

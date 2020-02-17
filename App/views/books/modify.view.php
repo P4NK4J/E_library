@@ -178,15 +178,15 @@ $categories = $app['categories']->categoryList('categories', $column);
                                 <a href="#" data-toggle="modal" data-target="#bookdeletemodal<?= $i ?>" class="card-link" style="color:red;">Delete</a>
                                 <div class="modal fade" id="bookdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
+                                        <div class="modal-content" style="background-color:rgba(21,32,43,1);">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel2" style="color: darkcyan;">Remove from collection</h5>
+                                                <h5 class="modal-title" id="ModalLabel2" style="color:white;">Remove from collection</h5>
 
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body" style="color:black;">Please confirm the deletion of this book</div>
+                                            <div class="modal-body" style="color:#1d96e1;">Please confirm the deletion of this book</div>
 
                                             <div class="modal-footer">
 

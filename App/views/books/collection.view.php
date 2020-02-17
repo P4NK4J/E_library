@@ -5,7 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($_SESSION['user_type'] != 'reader')
 
-    header("location:/login");?>
+    header("location:/login");
+
+$column = array('id', 'name');
+$categories = $app['categories']->categoryList('categories', $column); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,18 +18,15 @@ if ($_SESSION['user_type'] != 'reader')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="Resources/CSS/footer.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title> collection</title>
+    <title>collection</title>
 </head>
 
-<body>
-
+<body style="background-color: rgba(101,157,189,0.4);">
     <?php require "views/users/navbar.reader.view.php"; ?>
 
     <script>
@@ -46,27 +47,41 @@ if ($_SESSION['user_type'] != 'reader')
         }
     </script>
     <link rel="stylesheet" href="Resources/CSS/searchbar.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Resources/CSS/floating button.css">
 
-    <div id="content" class="p-4 p-md-5 pt-5">
-        <div class="searchbar" style="float: right; width: 350px;">
-            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+    <div id="content" class="p-4 p-md-5 pt-5 ">
+
+
+        <div class="searchbar mt-4 mr-4" style="float: right; max-width: 100%;">
+
+
+
+            <input class="search_input " type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
-        <h1 class="mb-4" style="color: darkcyan;">Our Collection</h1>
-        <div class="card-deck" id="mybooks" style="margin-left: 40px; margin-right: 40px; margin-bottom: 200px;">
-            <?php $books = $app['database_book']->bookList();
+
+        <div class="row mt-4 ">
+
+            <h2 class=" font-weight-bolder " style="color: darkcyan;font-size:45px; margin-left:30px;"><?= "Our Collection"  ?></h2>
+            
+        </div>
+       
+    </div>
+
+    <div style="min-height:100%;">
+        <div class="card-deck  " id="mybooks" style="margin-bottom: 50px; margin-left: 60px;margin-right:0px;">
+        <?php $books = $app['database_book']->bookList();
             $cat_tag = $app['database_book']->listBookss();
             $uid = $_SESSION['id'];
             $i = -1;
             foreach ($books as $row) :
                 $i++;
             ?>
-                <div class="card-column" style="padding-left: 10px; padding-right: 10px; padding-top: 30px;">
+                <div class="card-column card-group" style="padding-left: 10px; padding-top: 60px;">
                     <br>
-                    <div class="card h-100" style="width: 15rem; box-shadow: 0 0 4px;">
-                        <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 19rem; ">
-                        <div class="card-body flex-fill " style="background-color: #f1f5f5; ">
+                    <div class="card" style="width: 15rem; margin-right:50px;">
+                        <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 20rem; ">
+                        <div class="card-body flex-fill " style="background-color: rgba(101,157,189,0.2); ">
                             <h6 class="card-title">
 
                                 <?php echo ($row['name']);
@@ -82,7 +97,7 @@ if ($_SESSION['user_type'] != 'reader')
                                     foreach ($cat_tag[$i] as $key) :
                                         $cat_name = $key['category_id'];
                                         $stmt = $app['database_book']->catName($cat_name);  ?>
-                                        <span class="badge" style="cursor: pointer; background-color: gainsboro;">
+                                        <span class="badge" style="cursor:auto; background-color:rgba(21,32,430,0.1) ;">
                                             <?php
                                             echo $stmt['name'];
                                             ?>
@@ -114,13 +129,17 @@ if ($_SESSION['user_type'] != 'reader')
 
                                     <?php endif; ?>
                                 </div>
+
                         </div>
                     </div>
                 </div>
-            <?php endforeach;
-            die(); ?>
+            <?php endforeach; ?>
+
         </div>
     </div>
+
+
+    <?php require "Resources/partials/footer.php" ?>
 </body>
 
 </html>

@@ -39,7 +39,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark text-center font-weight-bold" id="navbar" style="background-color:rgba(21,32,43,1);">
-  <a class="nav-link ml-5  active  text-white mx-4 mystyle hoverstyle" href="collection">Home</a>
+  <a class="nav-link ml-5  active  text-white mx-4 mystyle hoverstyle" href="reader">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -50,7 +50,9 @@
     <ul class="navbar-nav mr-auto">
 
 
-
+    <li class="nav-item mx-5">
+        <a class="nav-link mystyle hoverstyle text-white" href="collection">Available books</a>
+      </li>
 
 
       <li class="nav-item mx-5">

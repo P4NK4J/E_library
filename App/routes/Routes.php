@@ -25,7 +25,7 @@ $router->define([
 
     'admin' => 'views/users/admin.view.php',
 
-    'reader' => 'views/users/reader.view.php',
+    
     
     'userlist' => 'views/users/readerlist.view.php',
 
@@ -42,6 +42,8 @@ $router->define([
     'collection' => 'views/books/collection.view.php',
 
     'activation' => 'controller/authentication/VerifyRegistrationController.php',
+
+    'resetpassword' => 'views/authentication/reset.password.view.php',
     
     'category_list' => 'views/books/category.list.view.php',
     
@@ -52,5 +54,21 @@ $router->define([
     'deletebook' => 'controller/books/DeleteBookController.php',
 
     'addcat' => 'controller/AddCategoryController.php',
+    
+    'reset' => 'controller/authentication/ResetPasswordController.php',
+
+    'forgot' => 'controller/authentication/ForgetPasswordController.php',
+
+    'reseterror' => 'views/authentication/reset.error.view.php',
+
+    'message' => 'views/authentication/message.view.php',
+    
+    'resetmessage' => 'views/authentication/reset.message.view.php',
+
+    'reader' => 'views/users/reader.view.php',
+
+    'verifymsg' => 'views/authentication/verifymsg.view.php',
+
+    'verified' => 'views/authentication/verified.view.php',
 
 ]);

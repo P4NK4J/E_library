@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE)
     session_start();
 
 if ($_SESSION['user_type'] != 'admin')
-    header("location:/login");
+    header("location:/");
 
 $book_name = $_POST['bookname'];
 $author_name = $_POST['author'];

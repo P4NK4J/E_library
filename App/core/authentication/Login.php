@@ -16,15 +16,27 @@ class Login extends QueryBuilder
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (empty(trim($_POST["email"]))) {
+                session_start();
                 $email_err = "Please enter email";
+                $_SESSION["err"] = $email_err;
+                header('location:/');
             } else {
                 $email = trim($_POST["email"]);
             }
 
             if (empty(trim($_POST["password"]))) {
+                session_start();
                 $password_err = "Please enter your password";
+                $_SESSION["err"] = $password_err;
+                header('location:/');
             } else {
                 $password = $_POST["password"];
+            }
+            if (empty($_POST["email"]) && empty($_POST["password"])) {
+                session_start();
+                $error = "Please fill up the form";
+                $_SESSION["err"] = $error;
+                header('location:/');
             }
 
             if (empty($email_err) && empty($password_err)) {
@@ -39,7 +51,7 @@ class Login extends QueryBuilder
                             $hashed_password = $row["password"];
 
                             if (password_verify($password, $hashed_password)) {
-                               
+
                                 if ($row['activated']) {
                                     $_SESSION["loggedin"] = true;
                                     $_SESSION["name"] = $row['name'];
@@ -50,21 +62,34 @@ class Login extends QueryBuilder
                                     $str = $row['user_type'];
                                     header("location:/$str");
                                 } else {
+                                    session_start();
+                                    $err_message = "Account not activated";
+                                    $_SESSION["err"] = $err_message;
 
-                                    echo "First verify your email via link";
+                                    header('location:/');
                                 }
                             } else {
 
-                                echo "Invalid Password.";
+                                session_start();
+                                $err_message = "The password you entered was not valid";
+                                $_SESSION["err"] = $err_message;
+
+                                header('location:/');
                             }
                         }
                     } else {
 
-                        echo  "Email not Found";
+                        session_start();
+                        $err_message = "No account found with that email";
+                        $_SESSION["err"] = $err_message;
+                        header('location:/');
                     }
                 } else {
 
-                    echo "Sorry for the inconvenience.... Please try again later";
+                    session_start();
+                    $err_message = "Oops! something went wrong";
+                    $_SESSION["err"] = $err_message;
+                    header('location:/');
                 }
             }
         }
@@ -82,7 +107,7 @@ class Login extends QueryBuilder
             $count = $stmt->rowcount();
             if ($count == 1) {
 
-                $row = $stmt->fetch();  
+                $row = $stmt->fetch();
                 session_start();
                 $_SESSION["loggedin"] = true;
                 $_SESSION["name"] = $row['name'];
@@ -90,7 +115,7 @@ class Login extends QueryBuilder
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['user_type'] = $row['user_type'];
 
-                if ($row['user_type'] == 'admin') {     
+                if ($row['user_type'] == 'admin') {
                     header('location:/admin');
                 } else {
                     header('location:/reader');
@@ -106,12 +131,12 @@ class Login extends QueryBuilder
                 $row = $stmt->fetch();
                 session_start();
                 $_SESSION["loggedin"] = true;
-                
+
                 $_SESSION['name'] = $row['name'];
                 $_SESSION["email"] = $row['email'];
-                
+
                 $_SESSION['user_type'] = $row['user_type'];
-                
+
                 return $entry;
             }
         }
@@ -119,17 +144,44 @@ class Login extends QueryBuilder
 
     public function gAuth()
     {
-       require "gmailconfig.php";
-       
-
+        require "gmailconfig.php";
         if (isset($_GET['code'])) {
             $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
-            $gClient->setAccessToken($token['access_token']); 
-            $oAuth = new Google_Service_Oauth2($gClient); 
-            $userData = $oAuth->userinfo_v2_me->get();   
-            return $userData;
+            
+            $gClient->setAccessToken($token['access_token']);
+            
+
+            // get profile info
+            $google_oauth = new Google_Service_Oauth2($gClient);
+            var_dump($google_oauth);
+            die();
+            $google_account_info = $google_oauth->userinfo->get();
+            return $google_account_info;
+
+            //now you can use this profile info to create account in your website and make user logged in.
         } else {
-            return  $gClient->createAuthUrl();
+            return $gClient->createAuthUrl();
+        }
+    }
+
+    public function forgotPassword($email)
+    {
+        $this->values = array('email');
+        $stmt = parent::select($this->table, $this->column, $this->values, $email);
+        return $stmt;
+    }
+    public function resetPassword($hash, $email, $secured_password)
+    {
+        $this->values = array('hash');
+        $stmt = parent::select($this->table, $this->column, $this->values, $hash);
+        if ($stmt->execute()) {
+            $count = $stmt->rowcount();
+            var_dump($count);
+            if ($count == 1) {
+                $stmt = parent::update($this->table, ['password' => $secured_password], 'hash', $hash);
+
+                return $stmt->execute();
+            }
         }
     }
 }

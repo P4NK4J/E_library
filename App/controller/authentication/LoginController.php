@@ -11,11 +11,11 @@ if (isset($_SESSION['loggedin']) == true) {
     } 
 }
 
-else {
-    require "gmailconfig.php";
-    $loginUrl = $gClient->createAuthUrl();
+// else {
+//     require "gmailconfig.php";
+//     $loginUrl = $gClient->createAuthUrl();
     
-}
+// }
 
 
 if (isset($_POST['login'])) {

@@ -31,17 +31,22 @@ $list = $app['database']->userList('reader'); ?>
 
 <script>
     function myFunction() {
-        var input, filter, cards, table, h5, title, i;
+        var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myFilter");
         filter = input.value.toUpperCase();
-        tableContainer = document.getElementById("myTable");
-        table = cardContainer.getElementsByClassName("card");
-        for (i = 0; i < cards.length; i++) {
-            title = cards[i].querySelector(".card-body h6.card-title");
-            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
     }
@@ -115,8 +120,8 @@ $list = $app['database']->userList('reader'); ?>
 
 
     </div>
-    <?php require "Resources/partials/footer.php" ?> 
-    
+    <?php require "Resources/partials/footer.php" ?>
+
 </body>
 
 

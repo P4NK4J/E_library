@@ -38,20 +38,27 @@ $list = $app['categories']->categoryList();
 
 <script>
     function myFunction() {
-        var input, filter, cards, table, h5, title, i;
+
+        var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myFilter");
         filter = input.value.toUpperCase();
-        tableContainer = document.getElementById("myTable");
-        table = cardContainer.getElementsByClassName("card");
-        for (i = 0; i < cards.length; i++) {
-            title = cards[i].querySelector(".card-body h6.card-title");
-            if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
     }
+</script>
 </script>
 
 
@@ -86,8 +93,6 @@ $list = $app['categories']->categoryList();
                                 <span style="color:red">*</span>
                                 <input type="text" style="background-color:rgba(21,32,43,1); border-color:#1d96e1;color:white;" required name="catname" class="form-control" placeholder="">
                             </div>
-
-
                     </div>
                     <div class="modal-footer">
 
@@ -101,7 +106,7 @@ $list = $app['categories']->categoryList();
         </div>
 
         <div class="table-responsive">
-            <table class="table " style="margin-left:30px; max-width:95.5%;background-color:rgba(101,157,189,0.4);" id="myTable">
+            <table class="table" id="myTable" style="margin-left:30px; max-width:95.5%;background-color:rgba(101,157,189,0.4);" id="myTable">
                 <thead class="thead" style="background-color:darkcyan !important;">
                     <tr style="color:white;">
                         <th scope="col" style="padding-left:50px;">#</th>
@@ -112,7 +117,7 @@ $list = $app['categories']->categoryList();
 
                     </tr>
                 </thead>
-                <tbody style="font-size: 16px;">
+                <tbody class="table" style="font-size: 16px;">
                     <?php
                     $i = 1;
 
@@ -120,7 +125,7 @@ $list = $app['categories']->categoryList();
                         <tr>
 
                             <th scope="row" style="padding-left:50px;"><?php echo $i++; ?></th>
-                            <td><?php echo ($row['name']); ?></td>
+                            <td id="myCat"><?php echo ($row['name']); ?></td>
                             <td><?php echo ($row['date_added']); ?></td>
                             <td> <a href="#" data-toggle="modal" data-target="#catdeletemodal<?= $i ?>" class="card-link" style="color:red;">Delete</button>
                                     <div class="modal fade" id="catdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
@@ -155,8 +160,8 @@ $list = $app['categories']->categoryList();
 
 
     </div>
-    
-<?php require "Resources/partials/footer.php" ?>
+
+    <?php require "Resources/partials/footer.php" ?>
 </body>
 
 </html>
