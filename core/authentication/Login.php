@@ -153,8 +153,7 @@ class Login extends QueryBuilder
 
             // get profile info
             $google_oauth = new Google_Service_Oauth2($gClient);
-            var_dump($google_oauth);
-            die();
+            
             $google_account_info = $google_oauth->userinfo->get();
             return $google_account_info;
 
