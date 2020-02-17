@@ -9,13 +9,8 @@ if (isset($_SESSION['loggedin']) == true) {
     } else if ($_SESSION['user_type'] == 'admin') {
         header("location:/admin");
     } 
-}
+} 
 
-// else {
-//     require "gmailconfig.php";
-//     $loginUrl = $gClient->createAuthUrl();
-    
-// }
 
 
 if (isset($_POST['login'])) {

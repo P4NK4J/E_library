@@ -33,9 +33,6 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2em;
 
-
-
-
   }
 
   .active {
