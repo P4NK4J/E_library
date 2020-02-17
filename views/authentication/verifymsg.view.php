@@ -4,7 +4,7 @@ if(session_status() == PHP_SESSION_NONE){
 session_start();}
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     if ($_SESSION['user_type'] === 'reader') {
-        header("location: /user");
+        header("location: /reader");
         exit;
     } elseif ($_SESSION['user_type'] === 'admin') {
         header("location: /admin");
