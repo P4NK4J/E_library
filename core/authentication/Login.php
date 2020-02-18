@@ -120,35 +120,36 @@ class Login extends QueryBuilder
                     header('location:/reader');
                 }
             } else {
-                $f_name = $name;
-                $f_email = $email;
-                $f_type = 'reader';
                 $column = array('name', 'email', 'provider', 'activated');
-                $email = "'" . $email . "'";
                 $name = "'" . $name . "'";
-                $values = array($name, $email, $email, '1');
-                $result = parent::insert($this->table, $column, $values);
-                $entry = $result->execute();
-                $col = array('id', 'name', 'email', 'provider', 'activated');
+                $emailnew = "'" . $email . "'";
+                $active = "1";
+                $values = array($name, $emailnew, $emailnew, $active);
+                $stmt = parent::insert($this->table, $column, $values);
+                $stmt->execute();
                 $value = array('email');
-                $stmt = parent::select($this->table, $col, $value, $email);
-
-                $row = $stmt->execute();
-                var_dump($row);
-                die();
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION['id'] = $row['id'];
-
-                $_SESSION['name'] = $f_name;
-                $_SESSION["email"] = $f_email;
-
-                $_SESSION['user_type'] = $f_type;
-
-                return $entry;
-            }
+                array_unshift($column, 'id');
+                array_push($column, 'user_type');
+                $stmt = parent::select($this->table, $column, $value, $email);
+                $stmt->execute();
+                $count = $stmt->rowcount();
+                if ($count == 1) {
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    session_start();
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['user_type'] = $row['user_type'];
+                    if ($_SESSION['user_type'] == 'reader') {
+                        header('location: /reader');
+                    } else {
+                        header('location: /admin');
+                    }
+                }
         }
     }
+}
 
     public function gAuth()
     {
