@@ -96,11 +96,11 @@ class Login extends QueryBuilder
 
     public function gLogin($name, $email)
     {
-        $sel_column = array('email', 'user_type');
+       
 
         $sel_values = array('email');
 
-        $stmt = parent::select($this->table, $sel_column, $sel_values, $email);
+        $stmt = parent::select($this->table, $this->column, $sel_values, $email);
         if ($stmt->execute()) {
 
             $count = $stmt->rowcount();
@@ -112,6 +112,8 @@ class Login extends QueryBuilder
                 $_SESSION["name"] = $row['name'];
                 $_SESSION["email"] = $row['email'];
                 $_SESSION['id'] = $row['id'];
+                var_dump($row['id']);
+                die();
                 $_SESSION['user_type'] = $row['user_type'];
 
                 if ($row['user_type'] == 'admin') {
