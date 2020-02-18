@@ -33,7 +33,7 @@ $catlist = $app['categories']->categoryList();
 
 </head>
 
-<body style="background-color: rgba(101,157,189,0.4); ">
+<body style="background-color: rgba(101,157,189,0.4); overflow-x:hidden; ">
 
     <?php require "views/users/navbar.admin.view.php"; ?>
     <div class="foo row" style="justify-content:center;">
