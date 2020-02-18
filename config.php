@@ -6,7 +6,7 @@ return [
 
         'name' => 'e_library',
         'username' => 'root',
-        'password' => '',
+        'password' => '@coloredcow',
         'connection' => 'mysql:host=localhost',
         'options' => [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
