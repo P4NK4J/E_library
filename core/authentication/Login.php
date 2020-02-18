@@ -1,7 +1,4 @@
 <?php
-require "gmailconfig.php";
- $google_oauth = new Google_Service_Oauth2($gClient);
-
 class Login extends QueryBuilder
 
 {
@@ -146,17 +143,19 @@ class Login extends QueryBuilder
 
     public function gAuth()
     {
-        
+        require "gmailconfig.php";
         if (isset($_GET['code'])) {
-            $token = $GLOBALS['gClient']->fetchAccessTokenWithAuthCode($_GET['code']);
-            $GLOBALS['gClient']->setAccessToken($token['access_token']);
+            $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
+            $gClient->setAccessToken($token['access_token']);
             // get profile info
 
-            $google_account_info = $GLOBALS['google_oauth']->userinfo->get();
+            $google_oauth = new Google_Service_Oauth2($gClient);
+
+            $google_account_info = $google_oauth->userinfo->get();
             return $google_account_info;
             //now you can use this profile info to create account in your website and make user logged in.
         } else {
-            return $GLOBALS['gClient']->createAuthUrl();
+            return $gClient->createAuthUrl();
         }
     }
 
