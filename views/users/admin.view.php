@@ -36,7 +36,7 @@ $catlist = $app['categories']->categoryList();
 <body style="background-color: rgba(101,157,189,0.4); overflow-x:hidden;height:100%; ">
 
     <?php require "views/users/navbar.admin.view.php"; ?>
-    <div class="foo row" style="justify-content:center;">
+    <div class="foo row" style="justify-content:center;max-height:100%;">
         <div class="card-container col-xl-3 mx-xl-5 mx-lg-3 mx-md-4 col-md-5 col-10 mx-0  my-4">
             <div class="img-container">
                 <img src="Resources/Images/usericon.jpg" href="userlist" alt="not found">
