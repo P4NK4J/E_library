@@ -81,7 +81,7 @@ $catlist = $app['categories']->categoryList();
             </div>
 
             <div class="user-info">
-                <a href="categories" style="color:white;">
+                <a href="category_list" style="color:white;">
                     <h3>Total Genres</h3>
                 </a>
                 <span>
