@@ -120,25 +120,26 @@ class Login extends QueryBuilder
                     header('location:/reader');
                 }
             } else {
-                $f_name=$name;
-                $f_email=$email;
-                $f_type='reader';
+                $f_name = $name;
+                $f_email = $email;
+                $f_type = 'reader';
                 $column = array('name', 'email', 'provider', 'activated');
                 $email = "'" . $email . "'";
                 $name = "'" . $name . "'";
                 $values = array($name, $email, $email, '1');
                 $result = parent::insert($this->table, $column, $values);
                 $entry = $result->execute();
-                $col = array('id','name', 'email', 'provider', 'activated');
+                $col = array('id', 'name', 'email', 'provider', 'activated');
                 $value = array('email');
                 $stmt = parent::select($this->table, $col, $value, $email);
+
+                $row = $stmt->execute();
                 var_dump($stmt);
                 die();
-                $row = $stmt->execute();
                 session_start();
                 $_SESSION["loggedin"] = true;
-                $_SESSION['id']= $row['id'];
-               
+                $_SESSION['id'] = $row['id'];
+
                 $_SESSION['name'] = $f_name;
                 $_SESSION["email"] = $f_email;
 
