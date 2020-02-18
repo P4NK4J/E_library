@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if ($_SESSION['user_type'] != 'reader')
 
-    header("location:/login");
+    header("location:/");
 
 $column = array('id', 'name');
 $categories = $app['categories']->categoryList('categories', $column); ?>
