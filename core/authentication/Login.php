@@ -133,7 +133,7 @@ class Login extends QueryBuilder
                 // $row = $stmt->fetch();
                 session_start();
                 $_SESSION["loggedin"] = true;
-
+                $_SESSION['id']=$result->lastInsertId();
                 $_SESSION['name'] = $f_name;
                 $_SESSION["email"] = $f_email;
 
