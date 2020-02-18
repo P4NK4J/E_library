@@ -112,8 +112,7 @@ class Login extends QueryBuilder
                 $_SESSION["name"] = $row['name'];
                 $_SESSION["email"] = $row['email'];
                 $_SESSION['id'] = $row['id'];
-                var_dump($row['id']);
-                die();
+                
                 $_SESSION['user_type'] = $row['user_type'];
 
                 if ($row['user_type'] == 'admin') {
