@@ -12,7 +12,8 @@ else if ($_SESSION['user_type'] == 'reader')
 $list = $app['database']->userList('reader'); ?>
 
 <?php
-
+var_dump($_SESSION['id']);
+die();
 $uid = $_SESSION['id'];
 $stmt = $app['database_book']->fetchBooks($uid);
 
