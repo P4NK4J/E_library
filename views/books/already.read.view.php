@@ -54,7 +54,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
-                    tr[i].style.display = "none";
+                    tr[i].style.display = "No result found";
                 }
             }
         }
@@ -86,6 +86,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
 
                     <?php
+                
 
                     $i = 1;
                     foreach ($res as $key) :

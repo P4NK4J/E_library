@@ -28,7 +28,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <div id="notfound">
         <div class="notfound">
             <div class="notfound-404">
-                <h1>Oops!</h1>
+                <h1>Error!</h1>
             </div>
             <h2>404 - Account not found</h2>
             <p>The Email address you entered seems unregistered.</p>

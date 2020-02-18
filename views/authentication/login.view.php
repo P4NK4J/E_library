@@ -54,7 +54,7 @@ $loginUrl = Login::gAuth(); ?>
                      <div class="form-group">
 
                         <label for="exampleInputEmail1">Email address</label>
-                        <span style="color:red">*</span></label>
+                        <span  style="color:red">*</span></label>
 
                         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
 
@@ -130,9 +130,9 @@ $loginUrl = Login::gAuth(); ?>
                <div class="modal-body">
 
                   <div class="form-group">
-                     <label style="color:1d96e1;">Enter Email address</label>
+                     <label for="exampleInputEmail1" style="color:1d96e1;">Enter Email address</label>
                      <span style="color:red">*</span>
-                     <input type="text" name="email" style="background-color:rgba(21,32,43,1); border-color:#1d96e1;color:white;" required name="catname" class="form-control" placeholder="">
+                     <input type="email" required name="email" style="background-color:rgba(21,32,43,1); border-color:#1d96e1;color:white;"  class="form-control" placeholder="">
                   </div>
                </div>
                <div class="modal-footer">
