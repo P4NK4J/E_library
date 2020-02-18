@@ -5,8 +5,7 @@ if (session_status() == PHP_SESSION_NONE)
 if ($_SESSION['user_type'] != 'reader')
     header("location:/");
 
-    var_dump($_SESSION['id']);
-    die();
+    
     
 if (isset($_SESSION['id'])) {
     $uid = $_SESSION['id'];
