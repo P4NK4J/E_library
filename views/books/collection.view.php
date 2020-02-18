@@ -26,7 +26,7 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
     <title>collection</title>
 </head>
 
-<body style="background-color: rgba(101,157,189,0.4);">
+<body style="background-color: rgba(101,157,189,0.4);" >
     <?php require "views/users/navbar.reader.view.php"; ?>
 
     <script>
@@ -48,8 +48,8 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
     </script>
     <link rel="stylesheet" href="Resources/CSS/searchbar.css">
     <link rel="stylesheet" href="Resources/CSS/floating button.css">
-
-    <div id="content" class="p-4 p-md-5 pt-5 ">
+        <div class=" min-vh-100">
+    <div id="content" class="p-4 p-md-5 pt-5" >
 
 
         <div class="searchbar mt-4 mr-4" style="float: right; max-width: 100%;">
@@ -138,7 +138,7 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
         </div>
     </div>
 
-
+    </div>
     <?php require "Resources/partials/footer.php" ?>
 </body>
 
