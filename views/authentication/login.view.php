@@ -48,7 +48,7 @@ $loginUrl = Login::gAuth(); ?>
                   <div class="myform form mt-4" style="background-color: rgb(20,20,20,0.8);">
 
                      <form action="login" method="post" class="text-white px-4" name="login">
-                        <div class="form-group">
+                        <div class="form-group mt-3">
 
                            <label for="exampleInputEmail1">Email address</label>
                            <span style="color:red">*</span></label>
@@ -87,7 +87,7 @@ $loginUrl = Login::gAuth(); ?>
                               <div class="col-md-14 text-center mt-3">
                                  <a href="<?= $loginUrl ?>" id='hovaeracle' class="Google btn btn-block mybtn btn-outline-light">
                                     <i class="fa fa-google-plus">
-                                    </i>&nbsp;Gmail Login
+                                    </i>&nbsp; Gmail Login
                                  </a>
                               </div>
                            </p>
