@@ -82,7 +82,7 @@ $catlist = $app['categories']->categoryList();
 
             <div class="user-info">
                 <a href="categories" style="color:white;">
-                    <h3>Total Categories</h3>
+                    <h3>Total Genres</h3>
                 </a>
                 <span>
                 <h4 style="color:white;"><?php echo (count($catlist)); ?></h4>
