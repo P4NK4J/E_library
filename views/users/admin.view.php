@@ -12,7 +12,7 @@ $catlist = $app['categories']->categoryList();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-auto">
 
 <head>
     <meta charset="UTF-8">
@@ -33,10 +33,11 @@ $catlist = $app['categories']->categoryList();
 
 </head>
 
-<body style="background-color: rgba(101,157,189,0.4); overflow-x:hidden;height:100%; ">
+<body  style="background-color: rgba(101,157,189,0.4); overflow-x:hidden;" class='h-auto'>
 
     <?php require "views/users/navbar.admin.view.php"; ?>
-    <div class="foo row" style="justify-content:center;max-height:100%;">
+    <div class="h-auto">
+    <div class="foo row h-auto" style="justify-content:center;">
         <div class="card-container col-xl-3 mx-xl-5 mx-lg-3 mx-md-4 col-md-5 col-10 mx-0  my-4">
             <div class="img-container">
                 <img src="Resources/Images/usericon.jpg" href="userlist" alt="not found">
@@ -96,7 +97,7 @@ $catlist = $app['categories']->categoryList();
 
 
 
-
+    </div>
     <?php require "Resources/partials/footer.php" ?>
 </body>
 
