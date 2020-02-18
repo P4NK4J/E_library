@@ -120,6 +120,9 @@ class Login extends QueryBuilder
                     header('location:/reader');
                 }
             } else {
+                $f_name=$name;
+                $f_email=$email;
+                $f_type='reader';
                 $column = array('name', 'email', 'provider', 'activated');
                 $email = "'" . $email . "'";
                 $name = "'" . $name . "'";
@@ -131,10 +134,10 @@ class Login extends QueryBuilder
                 session_start();
                 $_SESSION["loggedin"] = true;
 
-                $_SESSION['name'] = $row['name'];
-                $_SESSION["email"] = $row['email'];
+                $_SESSION['name'] = $f_name;
+                $_SESSION["email"] = $f_email;
 
-                $_SESSION['user_type'] = $row['user_type'];
+                $_SESSION['user_type'] = $f_type;
 
                 return $entry;
             }
