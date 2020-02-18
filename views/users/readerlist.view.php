@@ -21,6 +21,8 @@ $list = $app['database']->userList('reader'); ?>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="Resources/CSS/searchbar.css">
@@ -36,6 +38,10 @@ $list = $app['database']->userList('reader'); ?>
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
+        flag = 0;
+
+        
+
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
@@ -44,15 +50,18 @@ $list = $app['database']->userList('reader'); ?>
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    
                 } else {
                     tr[i].style.display = "none";
+                    
                 }
             }
         }
+
     }
 </script>
 
-<body style="background-color: rgba(101,157,189,0.4);">
+<body style="background-color: rgba(101,157,189,0.4);height:100%;">
     <div id="content" class="p-4 p-md-5 pt-5 h-100" style="min-height:90%;padding-right:6rem; font-family: 'Open Sans', sans-serif;">
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
             <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
@@ -77,6 +86,7 @@ $list = $app['database']->userList('reader'); ?>
                 </thead>
                 <tbody>
                     <?php
+
                     $i = 1;
                     foreach ($list as $row) : ?>
                         <tr>
@@ -113,13 +123,18 @@ $list = $app['database']->userList('reader'); ?>
 
                         </tr>
                     <?php
-                    endforeach; ?>
+                    endforeach;
+                    ?>
+
                 </tbody>
             </table>
+
+
         </div>
 
 
     </div>
+
     <?php require "Resources/partials/footer.php" ?>
 
 </body>

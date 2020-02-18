@@ -36,8 +36,8 @@ $catlist = $app['categories']->categoryList();
 <body style="background-color: rgba(101,157,189,0.4); ">
 
     <?php require "views/users/navbar.admin.view.php"; ?>
-    <div class="foo">
-        <div class="card-container ">
+    <div class="foo row" style="justify-content:center;">
+        <div class="card-container col-xl-3 mx-xl-5 mx-lg-3 mx-md-4 col-md-5 col-10 mx-0  my-4">
             <div class="img-container">
                 <img src="Resources/Images/usericon.jpg" href="userlist" alt="not found">
 
@@ -54,7 +54,7 @@ $catlist = $app['categories']->categoryList();
 
             </div>
         </div>
-        <div class="card-container ">
+        <div class="card-container  col-xl-3 mx-xl-3 mx-lg-3 mx-md-4 col-md-5 col-10 mx-0  my-4">
             <div class="img-container">
                 <img src="Resources/Images/bookicon.jpeg" alt="not found">
                 <ul class="count">
@@ -72,7 +72,7 @@ $catlist = $app['categories']->categoryList();
 
             </div>
         </div>
-        <div class="card-container ">
+        <div class="card-container  col-xl-3 mx-xl-5 mx-lg-3 mx-md-4 col-md-5 col-10 mx-0  my-4">
             <div class="img-container">
                 <img src="Resources/Images/categoryicon.jpg" href="categories" alt="not found">
                 <ul class="count">

@@ -54,7 +54,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
-                    tr[i].style.display = "No result found";
+                    tr[i].style.display = "none";
                 }
             }
         }
@@ -62,7 +62,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </script>
 
 <body style="background-color: rgba(101,157,189,0.4);height:100%;">
-    <div id="content" class="p-4 p-md-5 pt-5 h-100" style="padding-right:6rem; font-family: 'Open Sans', sans-serif;">
+    <div id="content" class="p-4 p-md-5 pt-5 h-100" style="min-height:90%;padding-right:6rem; font-family: 'Open Sans', sans-serif;">
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
             <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
@@ -112,6 +112,9 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
         </div>
+        <?php  
+            if ($i==1)
+                   echo "<h3 class='text-center mt-4 font-weight-bolder'>You haven't read any books</h3>";?>
 
 
     </div>
