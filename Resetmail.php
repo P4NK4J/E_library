@@ -20,7 +20,7 @@ class PasswordMail
 
     public function sendMail($lastID, $hash)
     {
-        $this->mail->setFrom('kandpalpankaj08@gmail.com', 'F.R.I.E.N.D.S.');
+        $this->mail->setFrom('kandpalpankaj08@gmail.com', 'E_library');
         $this->mail->addAddress($_POST['email']);
         $this->mail->Subject = "New password link";
         $this->mail->isHTML(true);
