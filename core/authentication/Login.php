@@ -1,5 +1,6 @@
 <?php
-            $google_oauth = new Google_Service_Oauth2($gClient);
+require "gmailconfig.php";
+ $google_oauth = new Google_Service_Oauth2($gClient);
 
 class Login extends QueryBuilder
 
@@ -145,7 +146,7 @@ class Login extends QueryBuilder
 
     public function gAuth()
     {
-        require "gmailconfig.php";
+        
         if (isset($_GET['code'])) {
             $token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
             $gClient->setAccessToken($token['access_token']);
