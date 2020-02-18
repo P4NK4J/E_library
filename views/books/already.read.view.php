@@ -102,7 +102,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($readBook as $row) : ?>
                             <tr>
-                                <th scope="row"><?php echo $i++; ?></th>
+                                <th scope="row" style="padding-left:50px;"><?php echo $i++; ?></th>
                                 <td><?php echo ($row['name']); ?></td>
                                 <td><?php echo ($row['author']); ?></td>
                             </tr>
