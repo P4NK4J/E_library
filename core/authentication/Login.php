@@ -129,13 +129,13 @@ class Login extends QueryBuilder
                 $values = array($name, $email, $email, '1');
                 $result = parent::insert($this->table, $column, $values);
                 $entry = $result->execute();
-                // $stmt->execute();
-                // $row = $stmt->fetch();
+                $col = array('id','name', 'email', 'provider', 'activated');
+                $stmt = parent::select($this->table, $col, 'email', $email);
+                $row = $stmt->execute();
                 session_start();
                 $_SESSION["loggedin"] = true;
-                // $_SESSION['id']=
-                echo $entry->lastInsertId();
-                die();
+                $_SESSION['id']= $row['id'];
+               
                 $_SESSION['name'] = $f_name;
                 $_SESSION["email"] = $f_email;
 
