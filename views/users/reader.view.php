@@ -61,7 +61,7 @@ $catlist = $app['categories']->categoryList();
             </div>
         </div>
      
-        <div class="card-container ml-0 ml-5">
+        <div class="card-container ml-0 ml-md-5">
             <div class="img-container">
                 <img src="Resources/Images/readicon.jpg" alt="not found">
                 <ul class="count">
