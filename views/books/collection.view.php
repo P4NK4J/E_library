@@ -72,7 +72,10 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
         <div class="card-deck  " id="mybooks" style="margin-bottom: 50px; margin-left: 60px;margin-right:0px;">
         <?php $books = $app['database_book']->bookList();
             $cat_tag = $app['database_book']->listBookss();
+            var_dump($_SESSION['id']);
+            die();
             $uid = $_SESSION['id'];
+
             $i = -1;
             foreach ($books as $row) :
                 $i++;
