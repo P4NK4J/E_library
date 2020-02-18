@@ -2,6 +2,7 @@
 
 
 $data = Login::gAuth();
-
-$entry = $app['database']->gLogin($data->name, $data->email);
+echo "sadf";
+die();
+// $entry = $app['database']->gLogin($data->name, $data->email);
 
