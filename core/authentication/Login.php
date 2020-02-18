@@ -132,6 +132,8 @@ class Login extends QueryBuilder
                 $col = array('id','name', 'email', 'provider', 'activated');
                 $value = array('email');
                 $stmt = parent::select($this->table, $col, $value, $email);
+                var_dump($stmt);
+                die();
                 $row = $stmt->execute();
                 session_start();
                 $_SESSION["loggedin"] = true;
