@@ -2,11 +2,8 @@
 if (session_status() == PHP_SESSION_NONE)
     session_start();
 
-if ($_SESSION['user_type'] == 'admin')
-    require "views/users/navbar.admin.view.php";
-
-else if ($_SESSION['user_type'] == 'reader')
-    require "views/users/navbar.reader.view.php";
+if ($_SESSION['user_type'] != 'admin')
+    header("location:/");
 
 $column = array('id', 'name');
 $categories = $app['categories']->categoryList('categories', $column);
@@ -45,6 +42,9 @@ foreach ($ch as $key) {
 </head>
 
 <body style="padding-top:0px;padding-bottom: 120px ;background-color:rgba(101,157,189,0.4);">
+
+<?php require "views/users/navbar.admin.view.php"; ?>
+
 
 
     <div class="container" style="padding-top: 60px;">
