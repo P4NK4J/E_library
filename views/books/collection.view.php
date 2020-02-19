@@ -84,13 +84,13 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
                     <div class="card" style="width: 15rem; margin-right:50px;">
                         <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 20rem; ">
                         <div class="card-body flex-fill " style="background-color: rgba(101,157,189,0.2); ">
-                            <h6 class="card-title">
+                            <h6 class="card-title font-weight-bold">
 
                                 <?php echo ($row['name']);
                                 ?>
                                 </h5>
 
-                                <p class="card-text">
+                                <p class="card-text" style="font-size:13px;">
                                     <?php echo "Added On: {$row['date_added']}"; ?>
                                 </p>
                                 <p class="card-text">
