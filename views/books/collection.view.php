@@ -40,6 +40,7 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
                 title = cards[i].querySelector(".card-body h6.card-title");
                 if (title.innerText.toUpperCase().indexOf(filter) > -1) {
                     cards[i].style.display = "";
+                   
                 } else {
                     cards[i].style.display = "none";
                 }

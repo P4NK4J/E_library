@@ -33,20 +33,30 @@ $categories = $app['categories']->categoryList('categories', $column);
     <script>
         function myFunction() {
             var input, filter, cards, cardContainer, h5, title, i;
+            
             input = document.getElementById("myFilter");
             filter = input.value.toUpperCase();
             cardContainer = document.getElementById("mybooks");
             cards = cardContainer.getElementsByClassName("card");
+           var j=0;
             for (i = 0; i < cards.length; i++) {
                 title = cards[i].querySelector(".card-body h6.card-title");
                 if (title.innerText.toUpperCase().indexOf(filter) > -1) {
                     cards[i].style.display = "";
+                   j++;
+                   
                 } else {
                     cards[i].style.display = "none";
+                    
                 }
-            }
+            } if(j == 0)
+            $('.notfound').show();
+            else 
+            $('.notfound').hide();
+            
         }
     </script>
+
     <link rel="stylesheet" href="Resources/CSS/searchbar.css">
     <link rel="stylesheet" href="Resources/CSS/floating button.css">
 
@@ -202,11 +212,15 @@ $categories = $app['categories']->categoryList('categories', $column);
                     </div>
                 </div>
             <?php endforeach; ?>
+            <span class='notfound offset-3' style="display:none; font-size:30px; text-align:center;">
+                No record found
+            </span>
 
         </div>
     </div>
-    
+
 
     <?php require "Resources/partials/footer.php" ?>
 </body>
+
 </html>
