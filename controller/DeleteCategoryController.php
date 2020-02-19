@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if ($_SESSION['user_type'] != 'admin') {
-    header('location:/login');
+    header('location:/');
 }
 
 $stmt = $app['categories']->selectCat($_GET['id']);

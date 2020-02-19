@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if ($_SESSION['user_type'] != 'admin') {
-    header("location:/login");
+    header("location:/");
 }
 $userlist = $app['database']->userList('reader');
 $booklist = $app['database_book']->bookList();

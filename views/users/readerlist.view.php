@@ -32,39 +32,35 @@ $list = $app['database']->userList('reader'); ?>
 </head>
 
 <script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myFilter");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        flag = 0;
+    $(document).ready(function() {
 
-        
+        $('#myFilter').keyup(function() {
+            // Search Text
+            var search = $(this).val();
 
+            // Hide all table tbody rows
+            $('table tbody tr').hide();
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    
-                } else {
-                    tr[i].style.display = "none";
-                    
-                }
+            // Count total search result
+            var len = $('table tbody tr:not(.notfound) td:nth-child(2):contains("' + search + '")').length;
+
+            if (len > 0) {
+                // Searching text in columns and show match row
+                $('table tbody tr:not(.notfound) td:contains("' + search + '")').each(function() {
+                    $(this).closest('tr').show();
+                });
+            } else {
+                $('.notfound').show();
             }
-        }
 
-    }
+        });
+    });
 </script>
 
 <body style="background-color: rgba(101,157,189,0.4);height:100%;">
     <div id="content" class="p-4 p-md-5 pt-5 h-100" style="min-height:90%;padding-right:6rem; font-family: 'Open Sans', sans-serif;">
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
-            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+            <input class="search_input" type="text" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
 
@@ -72,7 +68,7 @@ $list = $app['database']->userList('reader'); ?>
 
 
         <div class="table-responsive">
-            <table class="table mx-auto" style="max-width:95.5%; background-color:rgba(101,157,189,0.4);" id="myTable">
+            <table class="table mx-auto" style="max-width:95.5%; background-color:rgba(101,157,189,0.2);" id="myTable">
                 <thead class="thead" style="background-color:darkcyan !important;">
                     <tr style="color:white;">
                         <th scope="col" style="padding-left:50px;">#</th>
@@ -125,6 +121,16 @@ $list = $app['database']->userList('reader'); ?>
                     <?php
                     endforeach;
                     ?>
+                    <tr class='notfound'>
+                        <td colspan='4'>No record found</td>
+                        <style>
+                            .notfound {
+                                display: none;
+                                text-align: center;
+                                font-size: 20px;
+                            }
+                        </style>
+                    </tr>
 
                 </tbody>
             </table>

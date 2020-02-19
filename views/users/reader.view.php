@@ -4,8 +4,9 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if ($_SESSION['user_type'] != 'reader') {
-    header("location:/login");
+    header("location:/");
 }
+
 $list = $app['database']->userList('reader'); ?>
 
 <?php

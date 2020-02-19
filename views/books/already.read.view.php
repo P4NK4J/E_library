@@ -25,7 +25,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reader's List</title>
+    <title>Read Books</title>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -40,32 +40,27 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myFilter");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
+    $(document).ready(function() {
 
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
+        $('#myFilter').keyup(function() {
+            var search = $(this).val();
+            $('table tbody tr').hide();
+            var len = $('table tbody tr:not(.notfound) td:nth-child(2):contains("' + search + '")').length;
+            if (len > 0) {
+                $('table tbody tr:not(.notfound) td:contains("' + search + '")').each(function() {
+                    $(this).closest('tr').show();
+                });
+            } else {
+                $('.notfound').show();
             }
-        }
-    }
+        });
+    });
 </script>
 
 <body style="background-color: rgba(101,157,189,0.4);height:100%;">
     <div id="content" class="p-4 p-md-5 pt-5 h-100" style="min-height:90%;padding-right:6rem; font-family: 'Open Sans', sans-serif;">
         <div class="searchbar mr-4" style="float: right; max-width:100%;">
-            <input class="search_input" type="text" onkeyup="myFunction()" placeholder="Search..." id="myFilter">
+            <input class="search_input" type="text" placeholder="Search..." id="myFilter">
             <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
         </div>
 
@@ -73,7 +68,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         <div class="table-responsive">
-            <table class="table mx-auto" style="max-width:60%; background-color:rgba(101,157,189,0.4);" id="myTable">
+            <table class="table mx-auto" style="max-width:60%; background-color:rgba(101,157,189,0.2);" id="myTable">
                 <thead class="thead" style="background-color:darkcyan !important;">
                     <tr style="color:white;">
                         <th scope="col" style="padding-left:50px;">#</th>
@@ -87,7 +82,7 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
 
                     <?php
-                
+
 
                     $i = 1;
                     foreach ($res as $key) :
@@ -109,13 +104,23 @@ $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php endforeach;
                     endforeach;
                     ?>
+                    <tr class='notfound'>
+                        <td colspan='4'>No record found</td>
+                        <style>
+                            .notfound {
+                                display: none;
+                                text-align: center;
+                                font-size: 20px;
+                            }
+                        </style>
+                    </tr>
 
                 </tbody>
             </table>
         </div>
-        <?php  
-            if ($i==1)
-                   echo "<h3 class='text-center mt-4 font-weight-bolder'>You haven't read any books</h3>";?>
+        <?php
+        if ($i == 1)
+            echo "<h3 class='text-center mt-4 font-weight-bolder'>You haven't read any books</h3>"; ?>
 
 
     </div>

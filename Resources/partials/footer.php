@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
                 <p>E-Library is developed to serve the readers with a wide variety of books, making their journey meaningful </p>
-                <p class="h6">&copy All right Reversed.<a class="text-green ml-2"></a>
+                <p class="h6">&copy All rights reserved.<a class="text-green ml-2"></a>
             </div>
             </hr>
         </div>
