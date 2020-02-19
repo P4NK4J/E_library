@@ -173,9 +173,9 @@ $categories = $app['categories']->categoryList('categories', $column);
                                     ?>
                                 </p>
 
-                                <a href="editview?bid=<?php echo $row['id'] ?>" class="card-link" style="color: green;">Edit</a>
+                                <a href="editview?bid=<?php echo $row['id'] ?>" class="card-link font-weight-bold" style="color: green;">Edit</a>
 
-                                <a href="#" data-toggle="modal" data-target="#bookdeletemodal<?= $i ?>" class="card-link" style="color:red; float:right;">Delete</a>
+                                <a href="#" data-toggle="modal" data-target="#bookdeletemodal<?= $i ?>" class="card-link font-weight-bold" style="color:red; float:right;">Delete</a>
                                 <div class="modal fade" id="bookdeletemodal<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content" style="background-color:rgba(21,32,43,1);">
