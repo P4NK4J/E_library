@@ -7,11 +7,15 @@ if ($_SESSION['user_type'] != 'reader')
 
     
     
+  
 if (isset($_SESSION['id'])) {
     $uid = $_SESSION['id'];
+    
     if (isset($_GET['bid'])) {
         $bid = $_GET['bid'];
+        
         $app['database_book']->readBook($uid, $bid);
+        
         header('location:/collection');
     }
 }

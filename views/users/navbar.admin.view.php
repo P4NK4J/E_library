@@ -9,24 +9,10 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
-  var btnContainer = document.getElementById("#navbarSupportedContent");
-
-  // Get all buttons with class="btn" inside the container
-  var btns = btnContainer.getElementsByClassName("nav-link");
-
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-      var current = document.getElementsByClassName("active");
-
-      // If there's no active class
-      if (current.length > 0) {
-        current[0].className = current[0].className.replace(" active", "");
-      }
-
-      // Add the active class to the current/clicked button
-      this.className += " active";
-    });
-  }
+  $('#topheader .navbar-nav a').on('click', function() {
+    $('#topheader .navbar-nav').find('li.active').removeClass('active');
+    $(this).parent('li').addClass('active');
+  });
 </script>
 <style>
   .mystyle {
@@ -70,16 +56,16 @@
 
 
 
-      <li class="nav-item mx-4">
-        <a class="nav-link text-white mystyle hoverstyle " href="booklist">Manage</a>
+      <li class="nav-item  mx-4">
+        <a class="nav-link text-white  mystyle hoverstyle " href="booklist">Manage</a>
       </li>
 
       <li class="nav-item mx-4">
-        <a class="nav-link text-white mystyle hoverstyle " href="category_list">Categories</a>
+        <a class="nav-link text-white  mystyle hoverstyle " href="category_list">Categories</a>
       </li>
 
       <li class="nav-item mx-4">
-        <a class="nav-link text-white mystyle hoverstyle" href="userlist">Readers</a>
+        <a class="nav-link text-white  mystyle hoverstyle" href="userlist">Readers</a>
       </li>
 
     </ul>

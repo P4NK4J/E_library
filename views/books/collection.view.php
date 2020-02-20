@@ -89,9 +89,9 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
                 foreach ($books as $row) :
                     $i++;
                 ?>
-                    <div class="card-column card-group" style="padding-left: 10px; padding-top: 60px;">
+                    <div class="card-column card-group" style="padding-left: 8px; padding-top: 60px;">
                         <br>
-                        <div class="card" style="width: 15rem; margin-right:50px;">
+                        <div class="card" style="width: 15rem; margin-right:55px;">
                             <img class="card-img-top" src="Resources/Images/<?= $row['cover_image'] ?>" alt="" style="max-height: 20rem; ">
                             <div class="card-body flex-fill " style="background-color: rgba(101,157,189,0.2); ">
                                 <h6 class="card-title font-weight-bold">
@@ -129,6 +129,7 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
                                     endforeach;
                                     $link = "/readbyuser?bid=" . $bid;
                                     $lnk = "/unreadbyuser?bid=" . $bid;
+                                    
                                     ?>
 
                                     <div class="form-check">
@@ -157,5 +158,6 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
     </div>
     <?php require "Resources/partials/footer.php" ?>
 </body>
+
 
 </html>
