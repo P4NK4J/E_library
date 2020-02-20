@@ -39,8 +39,8 @@
 </head>
 
 <body class="my-0 py-0" style="background-image:url(Resources/Images/background_color.jpg); background-size:cover; ">
-   <div class="container-fluid my-0 py-5 min-vh-100" style="background-color:rgb(20,20,20,0.6);">
-      <div class="container-fluid px-md-5 mt-4 mb-3">
+   <div class="container-fluid my-5 py-5 min-vh-100" style="background-color:rgb(20,20,20,0.6);">
+      <div class="container-fluid px-md-5 mt-3 mb-3">
          <div class="row mx-lg-4  mx-auto px-auto">
             <div class="col-sm-12 col-md-4 col-lg-4 mt-5 pt-5 offset-lg-2 col-xl-4 offset-xl-2 text-lg-center text-md-center text-xl-center mb-5 mt-2">
                <h2 class="display-4 font-weight-bold text-white " style="font-family: 'Open Sans', sans-serif;">Reset password here</h2>
