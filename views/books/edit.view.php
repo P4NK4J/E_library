@@ -63,8 +63,8 @@ foreach ($ch as $key) {
 
     <div class="container mt-5 pt-5">
         <div class="row">
-           
-            <img class="mx-auto my-auto" id="blah" src="<?php echo "Resources/Images/".$book["cover_image"]; ?>"  alt="IMG" style="width:380px; height:480px;">
+
+            <img class="mx-auto my-auto" id="blah" src="<?php echo "Resources/Images/" . $book["cover_image"]; ?>" alt="IMG" style="width:380px; height:480px;">
 
 
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-5 mx-auto">

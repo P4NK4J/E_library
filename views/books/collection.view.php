@@ -79,7 +79,7 @@ $categories = $app['categories']->categoryList('categories', $column); ?>
         </div>
 
         <div style="min-height:100%;">
-            <div class="card-deck  " id="mybooks" style="margin-bottom: 50px; margin-left: 60px;margin-right:0px;">
+            <div class="card-deck" id="mybooks" style="margin-bottom: 50px; margin-left: 60px;margin-right:0px;">
                 <?php $books = $app['database_book']->bookList();
                 $cat_tag = $app['database_book']->listBookss();
 
